@@ -1,3 +1,5 @@
+/* purgecss start ignore */
+
 :root {
     --flip-size: 160px;
     --flip-half: 80px;
@@ -35,7 +37,7 @@ html {
 }
 .flipdown.flipdown__theme-large {
     display: var(--flip-display);
-    width: max-content;
+    width: max-content !important;
     height: 100%;
     margin-bottom: 100px;
   }
@@ -169,3 +171,5 @@ html {
  .fab-theme-button.moon {
   background-image: url("/assets/media/icon_moon.svg");
  }
+
+ /* purgecss end ignore */
