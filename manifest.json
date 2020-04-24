@@ -1,0 +1,67 @@
+{
+    "name": "Iftarkar | Iftar/Sehri Countdown",
+    "short_name": "Iftarkar",
+    "start_url": "/?utm_source=pwa",
+    "display": "standalone",
+    "background_color": "#ECEEF8",
+    "theme_color": "#3F51B5",
+    "orientation": "portrait-primary",
+    "icons": [
+      {
+        "src": "/assets/favicons/icon-32x32.png",
+        "type": "image/png", "sizes": "32x32"
+      },
+      {
+        "src": "/assets/favicons/icon-70x70.png",
+        "type": "image/png", "sizes": "70x70"
+      },
+      {
+        "src": "/assets/favicons/icon-72x72.png",
+        "type": "image/png", "sizes": "72x72"
+      },
+      {
+        "src": "/assets/favicons/icon-96x96.png",
+        "type": "image/png", "sizes": "96x96"
+      },
+      {
+        "src": "/assets/favicons/icon-128x128.png",
+        "type": "image/png","sizes": "128x128"
+      },
+      {
+        "src": "/assets/favicons/icon-144x144.png",
+        "type": "image/png", "sizes": "144x144"
+      },
+      {
+        "src": "/assets/favicons/icon-150x150.png",
+        "type": "image/png", "sizes": "150x150"
+      },
+      {
+        "src": "/assets/favicons/icon-152x152.png",
+        "type": "image/png", "sizes": "152x152"
+      },
+      {
+        "src": "/assets/favicons/icon-180x180.png",
+        "type": "image/png", "sizes": "180x180"
+      },
+      {
+        "src": "/assets/favicons/icon-192x192.png",
+        "type": "image/png", "sizes": "192x192"
+      },
+      {
+        "src": "/assets/favicons/icon-196x196.png",
+        "type": "image/png", "sizes": "196x196"
+      },
+      {
+        "src": "/assets/favicons/icon-310x310.png",
+        "type": "image/png", "sizes": "310x310"
+      },
+      {
+        "src": "/assets/favicons/icon-384x384.png",
+        "type": "image/png", "sizes": "384x384"
+      },
+      {
+        "src": "/assets/favicons/icon-512x512.png",
+        "type": "image/png", "sizes": "512x512"
+      }
+    ]
+  }

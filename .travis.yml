@@ -1,0 +1,22 @@
+language: python
+python:
+  - "3.6"
+# command to install dependencies
+install:
+  - pip install -r .travis/requirements.txt
+  - nvm install v12.16.1
+  - npm install
+  - npm i -g purgecss
+# command to run tests
+script: python .travis/build.py
+before_deploy: 
+  - purgecss -c ./purgecss.config.js --output assets/css/
+  - cd functions && npm install && cd ../
+
+deploy:
+  provider: netlify
+  site: $NETLIFY_SITE
+  auth: $NETLIFY_AUTH
+  dir: .
+  edge: true # opt in to dpl v2
+ 

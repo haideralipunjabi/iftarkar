@@ -1,0 +1,366 @@
+{
+    "ahlesunnat":{
+        "25/04/2020": {
+            "sehri": "4:20am",
+            "iftar": "7:13pm",
+            "sehri_timestamp": 1587768600,
+            "iftar_timestamp": 1587822180
+        },
+        "26/04/2020": {
+            "sehri": "4:19am",
+            "iftar": "7:14pm",
+            "sehri_timestamp": 1587854940,
+            "iftar_timestamp": 1587908640
+        },
+        "27/04/2020": {
+            "sehri": "4:17am",
+            "iftar": "7:15pm",
+            "sehri_timestamp": 1587941220,
+            "iftar_timestamp": 1587995100
+        },
+        "28/04/2020": {
+            "sehri": "4:16am",
+            "iftar": "7:15pm",
+            "sehri_timestamp": 1588027560,
+            "iftar_timestamp": 1588081500
+        },
+        "29/04/2020": {
+            "sehri": "4:14am",
+            "iftar": "7:16pm",
+            "sehri_timestamp": 1588113840,
+            "iftar_timestamp": 1588167960
+        },
+        "30/04/2020": {
+            "sehri": "4:13am",
+            "iftar": "7:16pm",
+            "sehri_timestamp": 1588200180,
+            "iftar_timestamp": 1588254360
+        },
+        "01/05/2020": {
+            "sehri": "4:12am",
+            "iftar": "7:17pm",
+            "sehri_timestamp": 1588286520,
+            "iftar_timestamp": 1588340820
+        },
+        "02/05/2020": {
+            "sehri": "4:10am",
+            "iftar": "7:17pm",
+            "sehri_timestamp": 1588372800,
+            "iftar_timestamp": 1588427220
+        },
+        "03/05/2020": {
+            "sehri": "4:08am",
+            "iftar": "7:18pm",
+            "sehri_timestamp": 1588459080,
+            "iftar_timestamp": 1588513680
+        },
+        "04/05/2020": {
+            "sehri": "4:07am",
+            "iftar": "7:19pm",
+            "sehri_timestamp": 1588545420,
+            "iftar_timestamp": 1588600140
+        },
+        "05/05/2020": {
+            "sehri": "4:06am",
+            "iftar": "7:20pm",
+            "sehri_timestamp": 1588631760,
+            "iftar_timestamp": 1588686600
+        },
+        "06/05/2020": {
+            "sehri": "4:05am",
+            "iftar": "7:21pm",
+            "sehri_timestamp": 1588718100,
+            "iftar_timestamp": 1588773060
+        },
+        "07/05/2020": {
+            "sehri": "4:03am",
+            "iftar": "7:21pm",
+            "sehri_timestamp": 1588804380,
+            "iftar_timestamp": 1588859460
+        },
+        "08/05/2020": {
+            "sehri": "4:02am",
+            "iftar": "7:22pm",
+            "sehri_timestamp": 1588890720,
+            "iftar_timestamp": 1588945920
+        },
+        "09/05/2020": {
+            "sehri": "4:01am",
+            "iftar": "7:23pm",
+            "sehri_timestamp": 1588977060,
+            "iftar_timestamp": 1589032380
+        },
+        "10/05/2020": {
+            "sehri": "4:00am",
+            "iftar": "7:24pm",
+            "sehri_timestamp": 1589063400,
+            "iftar_timestamp": 1589118840
+        },
+        "11/05/2020": {
+            "sehri": "3:59am",
+            "iftar": "7:25pm",
+            "sehri_timestamp": 1589149740,
+            "iftar_timestamp": 1589205300
+        },
+        "12/05/2020": {
+            "sehri": "3:57am",
+            "iftar": "7:26pm",
+            "sehri_timestamp": 1589236020,
+            "iftar_timestamp": 1589291760
+        },
+        "13/05/2020": {
+            "sehri": "3:56am",
+            "iftar": "7:26pm",
+            "sehri_timestamp": 1589322360,
+            "iftar_timestamp": 1589378160
+        },
+        "14/05/2020": {
+            "sehri": "3:55am",
+            "iftar": "7:27pm",
+            "sehri_timestamp": 1589408700,
+            "iftar_timestamp": 1589464620
+        },
+        "15/05/2020": {
+            "sehri": "3:54am",
+            "iftar": "7:28pm",
+            "sehri_timestamp": 1589495040,
+            "iftar_timestamp": 1589551080
+        },
+        "16/05/2020": {
+            "sehri": "3:53am",
+            "iftar": "7:29pm",
+            "sehri_timestamp": 1589581380,
+            "iftar_timestamp": 1589637540
+        },
+        "17/05/2020": {
+            "sehri": "3:52am",
+            "iftar": "7:30pm",
+            "sehri_timestamp": 1589667720,
+            "iftar_timestamp": 1589724000
+        },
+        "18/05/2020": {
+            "sehri": "3:51am",
+            "iftar": "7:30pm",
+            "sehri_timestamp": 1589754060,
+            "iftar_timestamp": 1589810400
+        },
+        "19/05/2020": {
+            "sehri": "3:50am",
+            "iftar": "7:31pm",
+            "sehri_timestamp": 1589840400,
+            "iftar_timestamp": 1589896860
+        },
+        "20/05/2020": {
+            "sehri": "3:49am",
+            "iftar": "7:32pm",
+            "sehri_timestamp": 1589926740,
+            "iftar_timestamp": 1589983320
+        },
+        "21/05/2020": {
+            "sehri": "3:48am",
+            "iftar": "7:32pm",
+            "sehri_timestamp": 1590013080,
+            "iftar_timestamp": 1590069720
+        },
+        "22/05/2020": {
+            "sehri": "3:47am",
+            "iftar": "7:33pm",
+            "sehri_timestamp": 1590099420,
+            "iftar_timestamp": 1590156180
+        },
+        "23/05/2020": {
+            "sehri": "3:46am",
+            "iftar": "7:34pm",
+            "sehri_timestamp": 1590185760,
+            "iftar_timestamp": 1590242640
+        },
+        "24/05/2020": {
+            "sehri": "3:45am",
+            "iftar": "7:35pm",
+            "sehri_timestamp": 1590272100,
+            "iftar_timestamp": 1590329100
+        }
+    },
+    "shia":{
+        "25/04/2020": {
+            "sehri": "4:18am",
+            "iftar": "7:19pm",
+            "sehri_timestamp": 1587768480,
+            "iftar_timestamp": 1587822540
+        },
+        "26/04/2020": {
+            "sehri": "4:17am",
+            "iftar": "7:20pm",
+            "sehri_timestamp": 1587854820,
+            "iftar_timestamp": 1587909000
+        },
+        "27/04/2020": {
+            "sehri": "4:15am",
+            "iftar": "7:21pm",
+            "sehri_timestamp": 1587941100,
+            "iftar_timestamp": 1587995460
+        },
+        "28/04/2020": {
+            "sehri": "4:13am",
+            "iftar": "7:22pm",
+            "sehri_timestamp": 1588027380,
+            "iftar_timestamp": 1588081920
+        },
+        "29/04/2020": {
+            "sehri": "4:11am",
+            "iftar": "7:23pm",
+            "sehri_timestamp": 1588113660,
+            "iftar_timestamp": 1588168380
+        },
+        "30/04/2020": {
+            "sehri": "4:10am",
+            "iftar": "7:24pm",
+            "sehri_timestamp": 1588200000,
+            "iftar_timestamp": 1588254840
+        },
+        "01/05/2020": {
+            "sehri": "4:09am",
+            "iftar": "7:25pm",
+            "sehri_timestamp": 1588286340,
+            "iftar_timestamp": 1588341300
+        },
+        "02/05/2020": {
+            "sehri": "4:08am",
+            "iftar": "7:27pm",
+            "sehri_timestamp": 1588372680,
+            "iftar_timestamp": 1588427820
+        },
+        "03/05/2020": {
+            "sehri": "4:06am",
+            "iftar": "7:28pm",
+            "sehri_timestamp": 1588458960,
+            "iftar_timestamp": 1588514280
+        },
+        "04/05/2020": {
+            "sehri": "4:05am",
+            "iftar": "7:29pm",
+            "sehri_timestamp": 1588545300,
+            "iftar_timestamp": 1588600740
+        },
+        "05/05/2020": {
+            "sehri": "4:04am",
+            "iftar": "7:30pm",
+            "sehri_timestamp": 1588631640,
+            "iftar_timestamp": 1588687200
+        },
+        "06/05/2020": {
+            "sehri": "4:03am",
+            "iftar": "7:31pm",
+            "sehri_timestamp": 1588717980,
+            "iftar_timestamp": 1588773660
+        },
+        "07/05/2020": {
+            "sehri": "4:02am",
+            "iftar": "7:32pm",
+            "sehri_timestamp": 1588804320,
+            "iftar_timestamp": 1588860120
+        },
+        "08/05/2020": {
+            "sehri": "4:01am",
+            "iftar": "7:33pm",
+            "sehri_timestamp": 1588890660,
+            "iftar_timestamp": 1588946580
+        },
+        "09/05/2020": {
+            "sehri": "3:59am",
+            "iftar": "7:34pm",
+            "sehri_timestamp": 1588976940,
+            "iftar_timestamp": 1589033040
+        },
+        "10/05/2020": {
+            "sehri": "3:58am",
+            "iftar": "7:34pm",
+            "sehri_timestamp": 1589063280,
+            "iftar_timestamp": 1589119440
+        },
+        "11/05/2020": {
+            "sehri": "3:57am",
+            "iftar": "7:35pm",
+            "sehri_timestamp": 1589149620,
+            "iftar_timestamp": 1589205900
+        },
+        "12/05/2020": {
+            "sehri": "3:56am",
+            "iftar": "7:36pm",
+            "sehri_timestamp": 1589235960,
+            "iftar_timestamp": 1589292360
+        },
+        "13/05/2020": {
+            "sehri": "3:55am",
+            "iftar": "7:36pm",
+            "sehri_timestamp": 1589322300,
+            "iftar_timestamp": 1589378760
+        },
+        "14/05/2020": {
+            "sehri": "3:53am",
+            "iftar": "7:36pm",
+            "sehri_timestamp": 1589408580,
+            "iftar_timestamp": 1589465160
+        },
+        "15/05/2020": {
+            "sehri": "3:52am",
+            "iftar": "7:36pm",
+            "sehri_timestamp": 1589494920,
+            "iftar_timestamp": 1589551560
+        },
+        "16/05/2020": {
+            "sehri": "3:51am",
+            "iftar": "7:37pm",
+            "sehri_timestamp": 1589581260,
+            "iftar_timestamp": 1589638020
+        },
+        "17/05/2020": {
+            "sehri": "3:50am",
+            "iftar": "7:38pm",
+            "sehri_timestamp": 1589667600,
+            "iftar_timestamp": 1589724480
+        },
+        "18/05/2020": {
+            "sehri": "3:49am",
+            "iftar": "7:39pm",
+            "sehri_timestamp": 1589753940,
+            "iftar_timestamp": 1589810940
+        },
+        "19/05/2020": {
+            "sehri": "3:48am",
+            "iftar": "7:40pm",
+            "sehri_timestamp": 1589840280,
+            "iftar_timestamp": 1589897400
+        },
+        "20/05/2020": {
+            "sehri": "3:47am",
+            "iftar": "7:41pm",
+            "sehri_timestamp": 1589926620,
+            "iftar_timestamp": 1589983860
+        },
+        "21/05/2020": {
+            "sehri": "3:46am",
+            "iftar": "7:42pm",
+            "sehri_timestamp": 1590012960,
+            "iftar_timestamp": 1590070320
+        },
+        "22/05/2020": {
+            "sehri": "3:45am",
+            "iftar": "7:43pm",
+            "sehri_timestamp": 1590099300,
+            "iftar_timestamp": 1590156780
+        },
+        "23/05/2020": {
+            "sehri": "3:44am",
+            "iftar": "7:43pm",
+            "sehri_timestamp": 1590185640,
+            "iftar_timestamp": 1590243180
+        },
+        "24/05/2020": {
+            "sehri": "3:43am",
+            "iftar": "7:44pm",
+            "sehri_timestamp": 1590271980,
+            "iftar_timestamp": 1590329640
+        }
+    }
+}

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iftarkar</title>
+  <link rel="stylesheet" href="assets/css/bulma.min.css">
+  <link rel="stylesheet" href="assets/css/flipdown.min.css">
+  <link rel="stylesheet" href="assets/css/index.css">
+  <script src="assets/js/flipdown.min.js"></script>
+  <!-- Favicons -->
+  <meta name="theme-color" content="#3F51B5">
+  </meta>
+  <link href="/assets/favicons/icon-32x32.png" rel="icon" sizes="32x32" />
+  <link href="/assets/favicons/icon-70x70.png" rel="icon" sizes="70x70" />
+  <link href="/assets/favicons/icon-72x72.png" rel="icon" sizes="72x72" />
+  <link href="/assets/favicons/icon-96x96.png" rel="icon" sizes="96x96" />
+  <link href="/assets/favicons/icon-128x128.png" rel="icon" sizes="128x128" />
+  <link href="/assets/favicons/icon-144x144.png" rel="icon" sizes="144x144" />
+  <link href="/assets/favicons/icon-150x150.png" rel="icon" sizes="150x150" />
+  <link href="/assets/favicons/icon-152x152.png" rel="icon" sizes="152x152" />
+  <link href="/assets/favicons/icon-180x180.png" rel="icon" sizes="180x180" />
+  <link href="/assets/favicons/icon-192x192.png" rel="icon" sizes="192x192" />
+  <link href="/assets/favicons/icon-196x196.png" rel="icon" sizes="196x196" />
+  <link href="/assets/favicons/icon-310x310.png" rel="icon" sizes="310x310" />
+  <link href="/assets/favicons/icon-384x384.png" rel="icon" sizes="384x384" />
+  <link href="/assets/favicons/icon-512x512.png" rel="icon" sizes="512x512" />
+  <link href="/assets/favicons/icon-180x180.png" rel="apple-touch-icon" sizes="180x180" />
+  <link href="/assets/favicons/icon-180x180.png" rel="apple-touch-icon-precomposed">
+  <link rel="icon" href="/assets/favicons/icon-32x32.png" sizes="32x32">
+  <link color="#3F51B5" href="/assets/media/icon.svg" rel="mask-icon" />
+  <link href="/assets/favicons/favicon.ico?v=2" rel="shortcut icon" />
+  <meta name="msapplication-TileColor" content="#fdfdfd">
+  <meta name="msapplication-TileImage" content="/assets/favicons/icon-144x144.png">
+  <link rel="shortcut icon" sizes="196x196" href="/assets/favicons/icon-196x196.png">
+  <meta name="application-name" content="Iftarkar">
+  <meta name="msapplication-tooltip" content="Iftarkar">
+  <meta name="msapplication-config" content="/assets/favicons/ieconfig.xml">
+
+</head>
+
+<body>
+  <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/">
+        <img src="/assets/media/logo_horizontal.svg" width="112" height="28">
+      </a>
+
+      <a onclick="javascript:toggleMenu();" role="button" class="navbar-burger burger" aria-label="menu"
+        aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/">
+          Home
+        </a>
+
+        <a class="navbar-item" onclick="javascript:launchCalendar()">
+          Calendar
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1 id="text-title" class="title has-text-centered">Time left for <b id="text-next"></b></h1>
+    <div class="tabs is-centered">
+      <ul>
+        <li class="is-active"><a data-fiqh="ahlesunnat">Ahle-Sunnat</a></li>
+        <li><a data-fiqh="shia">Fikkah Jaffaria</a></li>
+      </ul>
+    </div>
+    <h1 class="subtitle has-text-centered">Next Sehri Time is: <span id="text-sehritime"></span> </h1>
+    <h1 class="subtitle has-text-centered">Next Iftaar Time is: <span id="text-iftartime"></span> </h1>
+
+    <div id="flipdown" class="is-center flipdown"></div>
+  </div>
+  <div id="modal-calendar" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Calendar</p>
+        <button class="delete" aria-label="close" onclick="javascript:toggleModal('modal-calendar')"></button>
+      </header>
+      <section class="modal-card-body">
+        <div>
+          <table class="table is-bordered is-striped is-fullwidth">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Sehri</th>
+                <th>Iftar</th>
+              </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </div>
+  <button onclick="javascript:toggleTheme()" class="fab-theme-button sun">
+
+  </button>
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p>
+        <strong>Iftarkar</strong> by <a href="https://haideralipunjabi.com" target="_blank">Haider Ali Punjabi</a>|<a
+          href="https://hackesta.org" target="_blank">Hackesta</a>.
+      </p>
+    </div>
+  </footer>
+  <script src="assets/js/index.js"></script>
+</body>
+
+</html>
