@@ -1,0 +1,10 @@
+[{
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "org.hackesta.iftarkar",
+      "sha256_cert_fingerprints": [
+        "4F:EA:F9:B6:D7:24:EB:91:10:E9:94:4D:59:3C:CA:FD:58:26:C1:FF:DC:7A:66:D6:FF:F4:0C:E6:F4:66:7C:C2"
+      ]
+    }
+  }]
