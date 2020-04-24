@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Iftarkar</title>
   <link rel="stylesheet" href="assets/css/bulma.min.css">
+  <link rel="stylesheet" href="assets/css/bulma-switch.min.css">
   <link rel="stylesheet" href="assets/css/flipdown.min.css">
   <link rel="stylesheet" href="assets/css/index.css">
   <script src="assets/js/flipdown.min.js"></script>
@@ -70,12 +71,15 @@
 
   <div class="container">
     <h1 id="text-title" class="title has-text-centered">Time left for <b id="text-next"></b></h1>
-    <div class="tabs is-centered">
-      <ul>
-        <li class="is-active"><a data-fiqh="ahlesunnat">Ahle-Sunnat</a></li>
-        <li><a data-fiqh="shia">Fikkah Jaffaria</a></li>
-      </ul>
+
+    <div class="is-center" style="text-align: center;">
+      <label class="switch">
+        <input type="checkbox" id="change-fiqh">
+        <span class="slider round"></span>
+      </label>
+      <h1 class="title has-text-centered">Fikkah Jaffaria<h1>
     </div>
+    
     <h1 class="subtitle has-text-centered">Next Sehri Time is: <span id="text-sehritime"></span> </h1>
     <h1 class="subtitle has-text-centered">Next Iftaar Time is: <span id="text-iftartime"></span> </h1>
 

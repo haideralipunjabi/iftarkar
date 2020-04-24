@@ -16,10 +16,7 @@ fetch("/assets/data/timings.json").then(r=>r.json()).then(d=>{
         localStorage.setItem("fiqh",fiqh)
     }
     else if(fiqh==="shia"){
-        document.querySelectorAll(".tabs li").forEach(tab=>{
-            tab.classList.remove("is-active")
-        })
-        document.querySelectorAll(".tabs li")[1].classList.add("is-active")
+        document.getElementById("change-fiqh").checked = true;
     }
     loadData()
 })
@@ -87,17 +84,18 @@ function getTodaysDate(doffset){
     return `${(d.getDate()+doffset).toString().padStart(2,"0")}/${(d.getMonth()+1).toString().padStart(2,"0")}/${d.getFullYear()}`
 }
 
-document.querySelectorAll(".tabs li").forEach(item=>{
-    item.addEventListener('click',e=>{
-        fiqh = e.target.dataset["fiqh"];
-        loadData()
+document.getElementById("change-fiqh").addEventListener('change',e=>{
+    if(e.target.checked){
+        fiqh = "shia"
+    }
+    else {
+        fiqh = "ahlesunnat"
+    }
+    loadData()
         localStorage.setItem("fiqh",fiqh)
-        document.querySelectorAll(".tabs li").forEach(tab=>{
-            tab.classList.remove("is-active")
-        })
-        e.target.parentNode.classList.add("is-active")
-    });
 })
+
+
 function launchCalendar(){
     document.querySelector("#modal-calendar tbody").innerHTML = Object.keys(data[fiqh]).map(date=>{
        return `<tr><td>${date}</td><td>${data[fiqh][date]["sehri"]}</td><td>${data[fiqh][date]["iftar"]}</td></tr>`
