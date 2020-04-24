@@ -13,7 +13,7 @@ workbox.routing.registerRoute(
   })
 )
 workbox.routing.registerRoute(
-  /\.html$/,
+  "*",
   new workbox.strategies.StaleWhileRevalidate({
     cacheName: 'webpages',
     plugins: [
