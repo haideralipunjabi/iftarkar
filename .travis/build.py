@@ -2,8 +2,6 @@ import os
 from os import listdir
 from os.path import isfile, join, splitext
 
-templateLoader = jinja2.FileSystemLoader(searchpath="./")
-templateEnv = jinja2.Environment(loader=templateLoader)
 onlyfiles = [f for f in listdir() if splitext(f)[1]==".html"]
 
 
