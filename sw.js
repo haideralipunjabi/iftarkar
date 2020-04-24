@@ -8,18 +8,18 @@ workbox.routing.registerRoute(
     plugins: [
       new workbox.expiration.ExpirationPlugin({
         purgeOnQuotaError: true,
+        maxEntries: 100
+
       })
     ]
   })
 )
-workbox.routing.registerRoute(
-  new RegExp('*'),
-  new workbox.strategies.StaleWhileRevalidate({
-    cacheName: 'webpages',
-    plugins: [
-      new workbox.expiration.ExpirationPlugin({
-        purgeOnQuotaError: true,
-      })
-    ]
-  })
-)
+workbox.routing.setDefaultHandler(new workbox.strategies.StaleWhileRevalidate({
+  cacheName: 'extra',
+  plugins: [
+    new workbox.expiration.ExpirationPlugin({
+      purgeOnQuotaError: true,
+      maxEntries: 100
+    })
+  ]
+}))
