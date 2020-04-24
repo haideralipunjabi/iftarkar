@@ -75,7 +75,9 @@ function loadData(){
     new FlipDown(nexttimestamp,{
         theme: fliptheme,
         showEmptyRotors: false,
-    }).start();
+    }).start().ifEnded(()=>{
+        loadData();
+    });
 }
 
 
