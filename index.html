@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="assets/css/flipdown.min.css">
   <link rel="stylesheet" href="assets/css/index.css">
   <script src="assets/js/flipdown.min.js"></script>
+  <script src="assets/js/moment.min.js"></script>
   <!-- Favicons -->
   <meta name="theme-color" content="#3F51B5">
   </meta>
@@ -79,11 +80,16 @@
   <div class="container">
     <h1 id="text-title" class="title has-text-centered">Time left for <b id="text-next"></b></h1>
     
-    <h1 class="subtitle has-text-centered">Next Sehri Time is: <span id="text-sehritime"></span> </h1>
-    <h1 class="subtitle has-text-centered">Next Iftaar Time is: <span id="text-iftartime"></span> </h1>
+    <div><h1 class="title has-text-centered" id="clock"></h1></div>
+    <div class="progress-wrapper" style="margin-bottom: 20px; margin-top: 20px;">
+      <progress id="timeprogress" class="progress is-custom" value="0" max="100">0</progress>
+      <p class="progress-value">0%</p>
 
-    <div id="flipdown" class="is-center flipdown"></div>
+    </div>
+
   </div>
+  <h1 class="subtitle has-text-centered">Sahar Ending Time is: <span id="text-sehritime"></span> </h1>
+    <h1 class="subtitle has-text-centered">Next Iftaar Time is: <span id="text-iftartime"></span> </h1>
   <div id="modal-calendar" class="modal">
     <div class="modal-background"></div>
     <div class="modal-card">

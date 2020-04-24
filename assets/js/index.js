@@ -1,6 +1,7 @@
 let data;
 let fiqh;
 let theme = localStorage.getItem("theme");
+let itv;
 if(theme===null){
     theme="light"
 }
@@ -23,12 +24,12 @@ fetch("/assets/data/timings.json").then(r=>r.json()).then(d=>{
 
 function loadData(){
     if(data===undefined) return;
-    document.getElementById("flipdown").innerHTML="";
-    document.getElementById("flipdown").classList.remove("flipdown__theme-dark")
-    document.getElementById("flipdown").classList.remove("flipdown__theme-light")
+    document.getElementById("clock").innerHTML=""
+    clearInterval(itv);
 
     let todaysdate = getTodaysDate(0);
     let tomorrow = getTodaysDate(1);
+    let yesterday = getTodaysDate(-1);
     let timestamp = (new Date()).getTime()
     // let todaysdate = "25/04/2020"
     // let tomorrow = "26/04/2020"
@@ -43,20 +44,22 @@ function loadData(){
         nexttimestamp = data[fiqh][tomorrow]["sehri_timestamp"]
         document.getElementById("text-sehritime").innerHTML = data[fiqh][tomorrow]["sehri"]
         document.getElementById("text-iftartime").innerHTML =  data[fiqh][tomorrow]["iftar"]
-        document.getElementById("text-next").innerHTML =  "Sehri"
+        document.getElementById("text-next").innerHTML =  "Sahar"
 
     }
     else if(timestamp < data[fiqh][todaysdate]["sehri_timestamp"]*1000){
         division = 0;
         nexttimestamp = data[fiqh][todaysdate]["sehri_timestamp"]
+        
         document.getElementById("text-sehritime").innerHTML = data[fiqh][todaysdate]["sehri"]
         document.getElementById("text-iftartime").innerHTML =  data[fiqh][todaysdate]["iftar"]
-        document.getElementById("text-next").innerHTML =  "Sehri"
+        document.getElementById("text-next").innerHTML =  "Sahar"
 
     }
     else if(timestamp < data[fiqh][todaysdate]["iftar_timestamp"]*1000){
         division = 1;
         nexttimestamp = data[fiqh][todaysdate]["iftar_timestamp"]
+
         document.getElementById("text-sehritime").innerHTML = data[fiqh][tomorrow]["sehri"]
         document.getElementById("text-iftartime").innerHTML =  data[fiqh][todaysdate]["iftar"]
         document.getElementById("text-next").innerHTML =  "Iftar"
@@ -67,17 +70,48 @@ function loadData(){
         nexttimestamp = data[fiqh][tomorrow]["sehri_timestamp"]
         document.getElementById("text-sehritime").innerHTML = data[fiqh][tomorrow]["sehri"]
         document.getElementById("text-iftartime").innerHTML =  data[fiqh][tomorrow]["iftar"]
-        document.getElementById("text-next").innerHTML =  "Sehri"
+        document.getElementById("text-next").innerHTML =  "Sahar"
 
     }
-    let fliptheme = ((theme==="light")?"dark":"light") + ",large"
-    console.log(fliptheme)
-    new FlipDown(nexttimestamp,{
-        theme: fliptheme,
-        showEmptyRotors: false,
-    }).start().ifEnded(()=>{
-        loadData();
-    });
+    
+    
+    let clock = document.getElementById("clock")
+    let per;
+    let prevtimestamp;
+    if(moment.now()>Object.values(data[fiqh])[0]["sehri_timestamp"]*1000){
+        if(division===0){
+            prevtimestamp = data[fiqh][yesterday]["iftar_timestamp"]
+        }
+        else if(division===1){
+            prevtimestamp = data[fiqh][todaysdate]["sehri_timestamp"]
+        }
+        else if(division===2){
+            prevtimestamp = data[fiqh][todaysdate]["iftar_timestamp"]
+        }
+        let delta = moment(moment.now()).diff(moment(prevtimestamp*1000));
+        per = delta*100/((nexttimestamp - prevtimestamp)*1000)
+    }
+    else{
+        per = 0;
+    }
+    document.getElementById("timeprogress").value= Math.round(per)
+    document.querySelector(".progress-value").innerHTML=`${per.toFixed(2)}%`
+    itv = setInterval(()=>{
+        if(nexttimestamp*1000 <= moment.now()){
+            
+            clearInterval(itv)
+            loadData();
+            return;
+        } 
+        if(moment.now()>Object.values(data[fiqh])[0]["sehri_timestamp"]*1000){
+            let delta = moment(moment.now()).diff(moment(prevtimestamp*1000));
+            per = delta*100/((nexttimestamp - prevtimestamp)*1000)
+            document.getElementById("timeprogress").value= Math.round(per)
+            document.querySelector(".progress-value").innerHTML=`${per.toFixed(2)}%`
+        }
+        let diff = moment.duration(moment(nexttimestamp*1000).diff(moment(moment.now())))._data
+        clock.innerHTML=`${diff.hours.toString().padStart(2,"0")}:${diff.minutes.toString().padStart(2,"0")}:${diff.seconds.toString().padStart(2,"0")}`
+    },1000)
 }
 
 
