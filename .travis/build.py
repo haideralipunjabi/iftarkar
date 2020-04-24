@@ -16,7 +16,7 @@ def gen_sitemap():
                 <loc>%s</loc>
             </url>
             '''
-        %("https://iftarkar.hackesta..org/"+f.replace("index","").replace(".html","")))
+        %("https://iftarkar.com/"+f.replace("index","").replace(".html","")))
     sitemap_file.write('</urlset>')
     sitemap_file.close()
 
