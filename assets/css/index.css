@@ -209,8 +209,14 @@ input:checked + .slider:before {
 
   }
 }
-
+.select:not(.is-multiple) {
+  height: 2em;
+}
 .fas, .fab {
   margin-right: 7px;
+}
+
+.select select {
+  font-size: 0.8em;
 }
  /* purgecss end ignore */
