@@ -2,6 +2,7 @@ let data;
 let fiqh;
 let theme = localStorage.getItem("theme");
 let itv;
+let timeOffset = 0;
 if(theme===null){
     theme="light"
 }
@@ -10,7 +11,7 @@ if(theme==="dark"){
 }
 fetch("/assets/data/timings.json").then(r=>r.json()).then(d=>{
     fiqh = localStorage.getItem("fiqh");
-
+    timeOffset = localStorage.getItem("timeOffset")
     data = d;
     if(fiqh===null){
         fiqh="ahlesunnat"
@@ -19,6 +20,12 @@ fetch("/assets/data/timings.json").then(r=>r.json()).then(d=>{
     else if(fiqh==="shia"){
         document.getElementById("change-fiqh").checked = true;
     }
+    if(timeOffset===null){
+        timeOffset = 0;
+    }
+    else {
+        document.querySelector(`#offsetSelect option[data-offset='${timeOffset}']`).selected = true;
+    }
     loadData()
 })
 
@@ -26,7 +33,13 @@ function loadData(){
     if(data===undefined) return;
     document.getElementById("clock").innerHTML=""
     document.getElementById("a2clink").href = `assets/calendars/${fiqh}/timings.ics`
-
+    timeOffset = localStorage.getItem("timeOffset")
+    document.getElementById("timeOffsetGroup").classList.remove("is-hidden")
+    if(fiqh==="shia"){
+        document.getElementById("timeOffsetGroup").classList.add("is-hidden")
+        timeOffset = 0
+    }
+    console.log(timeOffset)
     clearInterval(itv);
 
     let todaysdate = getTodaysDate(0);
@@ -44,8 +57,8 @@ function loadData(){
     if(!Object.keys(data[fiqh]).includes(todaysdate)){
         division = 2;
         nexttimestamp = data[fiqh][tomorrow]["sehri_timestamp"]
-        document.getElementById("text-sehritime").innerHTML = data[fiqh][tomorrow]["sehri"]
-        document.getElementById("text-iftartime").innerHTML =  data[fiqh][tomorrow]["iftar"]
+        document.getElementById("text-sehritime").innerHTML = data[fiqh][tomorrow]["sehri"].timeOffset(timeOffset)
+        document.getElementById("text-iftartime").innerHTML =  data[fiqh][tomorrow]["iftar"].timeOffset(timeOffset)
         document.getElementById("text-next").innerHTML =  "Sahar"
 
     }
@@ -53,8 +66,8 @@ function loadData(){
         division = 0;
         nexttimestamp = data[fiqh][todaysdate]["sehri_timestamp"]
         
-        document.getElementById("text-sehritime").innerHTML = data[fiqh][todaysdate]["sehri"]
-        document.getElementById("text-iftartime").innerHTML =  data[fiqh][todaysdate]["iftar"]
+        document.getElementById("text-sehritime").innerHTML = data[fiqh][todaysdate]["sehri"].timeOffset(timeOffset)
+        document.getElementById("text-iftartime").innerHTML =  data[fiqh][todaysdate]["iftar"].timeOffset(timeOffset)
         document.getElementById("text-next").innerHTML =  "Sahar"
 
     }
@@ -62,21 +75,21 @@ function loadData(){
         division = 1;
         nexttimestamp = data[fiqh][todaysdate]["iftar_timestamp"]
 
-        document.getElementById("text-sehritime").innerHTML = data[fiqh][tomorrow]["sehri"]
-        document.getElementById("text-iftartime").innerHTML =  data[fiqh][todaysdate]["iftar"]
+        document.getElementById("text-sehritime").innerHTML = data[fiqh][tomorrow]["sehri"].timeOffset(timeOffset)
+        document.getElementById("text-iftartime").innerHTML =  data[fiqh][todaysdate]["iftar"].timeOffset(timeOffset)
         document.getElementById("text-next").innerHTML =  "Iftar"
 
     }
     else {
         division = 2;
         nexttimestamp = data[fiqh][tomorrow]["sehri_timestamp"]
-        document.getElementById("text-sehritime").innerHTML = data[fiqh][tomorrow]["sehri"]
-        document.getElementById("text-iftartime").innerHTML =  data[fiqh][tomorrow]["iftar"]
+        document.getElementById("text-sehritime").innerHTML = data[fiqh][tomorrow]["sehri"].timeOffset(timeOffset)
+        document.getElementById("text-iftartime").innerHTML =  data[fiqh][tomorrow]["iftar"].timeOffset(timeOffset)
         document.getElementById("text-next").innerHTML =  "Sahar"
 
     }
     
-    
+    nexttimestamp = nexttimestamp + (timeOffset*60)
     let clock = document.getElementById("clock")
     let per;
     let prevtimestamp;
@@ -90,6 +103,7 @@ function loadData(){
         else if(division===2){
             prevtimestamp = data[fiqh][todaysdate]["iftar_timestamp"]
         }
+        prevtimestamp = prevtimestamp + (timeOffset*60)
         let delta = moment(moment.now()).diff(moment(prevtimestamp*1000));
         per = delta*100/((nexttimestamp - prevtimestamp)*1000)
     }
@@ -132,7 +146,11 @@ document.getElementById("change-fiqh").addEventListener('change',e=>{
     loadData()
     localStorage.setItem("fiqh",fiqh)
 })
-
+document.getElementById("offsetSelect").addEventListener('change',e=>{
+    timeOffset = parseInt(e.target.selectedOptions[0].dataset["offset"])
+    localStorage.setItem("timeOffset", timeOffset)
+    loadData();
+})
 
 function launchCalendar(){
     document.querySelector("#modal-calendar tbody").innerHTML = Object.keys(data[fiqh]).map(date=>{
@@ -179,6 +197,12 @@ function toggleTheme(){
     loadData()
 }
 
+String.prototype.timeOffset = function(offset){
+    let t = moment(this, 'h:mma')
+    t.add(offset,'minute')
+    return t.format('h:mma')
+
+}
 
 if('serviceWorker' in navigator) {
     window.addEventListener('load', function() {
