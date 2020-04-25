@@ -154,7 +154,7 @@ document.getElementById("offsetSelect").addEventListener('change',e=>{
 
 function launchCalendar(){
     document.querySelector("#modal-calendar tbody").innerHTML = Object.keys(data[fiqh]).map(date=>{
-       return `<tr><td>${date}</td><td>${data[fiqh][date]["sehri"]}</td><td>${data[fiqh][date]["iftar"]}</td></tr>`
+       return `<tr><td>${date}</td><td>${data[fiqh][date]["sehri"].timeOffset(timeOffset)}</td><td>${data[fiqh][date]["iftar"].timeOffset(timeOffset)}</td></tr>`
     }).join("")
     toggleModal("modal-calendar")
 }
