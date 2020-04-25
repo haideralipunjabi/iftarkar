@@ -33,8 +33,8 @@ def gen_ics():
         for d in data[fiqh].keys():
             es = Event()
             ei = Event()
-            stime = arrow.get(dt.fromtimestamp(data[fiqh][d]["sehri_timestamp"]),'IST').to('UTC').strftime("%Y-%m-%d %H:%M:00")
-            itime = arrow.get(dt.fromtimestamp(data[fiqh][d]["iftar_timestamp"]),"IST").to('UTC').strftime("%Y-%m-%d %H:%M:00")
+            stime = arrow.get(dt.fromtimestamp(data[fiqh][d]["sehri_timestamp"]),'Asia/Kolkata').to('UTC').strftime("%Y-%m-%d %H:%M:00")
+            itime = arrow.get(dt.fromtimestamp(data[fiqh][d]["iftar_timestamp"]),"Asia/Kolkata").to('UTC').strftime("%Y-%m-%d %H:%M:00")
             time = dt.now()
             es.name = "Sahar Ending"
             es.begin = stime
