@@ -6,12 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Iftarkar</title>
   <link rel="stylesheet" href="assets/css/bulma.min.css">
-  <link rel="stylesheet" href="assets/css/bulma-switch.min.css">
-  <link rel="stylesheet" href="assets/css/flipdown.min.css">
+  <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+  <link rel="stylesheet" href="assets/css/brands.min.css">
+  <link rel="stylesheet" href="assets/css/solid.min.css">
   <link rel="stylesheet" href="assets/css/index.css">
-  <script src="assets/js/flipdown.min.js"></script>
   <script src="assets/js/moment.min.js"></script>
-  <script src="assets/js/icsFormatter.js"></script>
   <!-- Favicons -->
   <meta name="theme-color" content="#3F51B5">
   </meta>
@@ -65,10 +64,10 @@
         </a>
 
         <a class="navbar-item" onclick="javascript:launchCalendar()">
-          Timings
+          <i class="fas fa-clock"></i>Timings
         </a>
         <a class="navbar-item" id="a2clink" href="assets/calendars/ahlesunnat/timings.ics">
-          Add to Calendar
+          <i class="fas fa-calendar-alt"></i>Add to Calendar
         </a>
         <a class="navbar-item navswitch">
           <label class="switch" style="margin-right: 5px;">
@@ -78,13 +77,22 @@
           Fikkah Jaffaria
         </a>
       </div>
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <a class="button is-info" target="_blank" href="mailto:developer@hackesta.org"><span class="is-small">
+              <i class="fas fa-envelope"></i>
+            </span>Mail Us</a>
+        </div>
+      </div>
     </div>
   </nav>
 
   <div class="container">
     <h1 id="text-title" class="title has-text-centered">Time left for <b id="text-next"></b></h1>
-    
-    <div><h1 class="title has-text-centered" id="clock"></h1></div>
+
+    <div>
+      <h1 class="title has-text-centered" id="clock"></h1>
+    </div>
     <div class="progress-wrapper" style="margin-bottom: 20px; margin-top: 20px;">
       <progress id="timeprogress" class="progress is-custom" value="0" max="100">0</progress>
       <p class="progress-value">0%</p>
@@ -93,25 +101,25 @@
 
   </div>
   <h1 class="subtitle has-text-centered">Sahar Ending Time is: <span id="text-sehritime"></span> </h1>
-    <h1 class="subtitle has-text-centered">Next Iftaar Time is: <span id="text-iftartime"></span> </h1>
-    <div id="timeOffsetGroup" class="has-text-centered">
-      <h1 class="subtitle" style="display: inline-block; line-height: 2.5rem; margin-right: 10px;">Offset: </h1>
-      <div class="select">
-        <select id="offsetSelect">
-          <option data-offset="0">None (0)</option>
-          <option data-offset="-1">Pulwama, Kulgam, Harmukh (-1)</option>
-          <option data-offset="-2">Anantnag, Tral, Kud (-2)</option>
-          <option data-offset="-3">Pahalgam (-3)</option>
-          <option data-offset="-11">Leh (-11)</option>
-          <option data-offset="1">Baramulla (+1)</option>
-          <option data-offset="2">Bandipora, Poonch (+2)</option>
-          <option data-offset="3">Uri (+3)</option>
-          <option data-offset="4">Teetwal, Karnah (+4)</option>
+  <h1 class="subtitle has-text-centered">Next Iftaar Time is: <span id="text-iftartime"></span> </h1>
+  <div id="timeOffsetGroup" class="has-text-centered">
+    <h1 class="subtitle" style="display: inline-block; line-height: 2.5rem; margin-right: 10px;">Change Area: </h1>
+    <div class="select">
+      <select id="offsetSelect">
+        <option data-offset="0"></option>
+        <option data-offset="-1">Pulwama, Kulgam, Harmukh (-1)</option>
+        <option data-offset="-2">Anantnag, Tral, Kud (-2)</option>
+        <option data-offset="-3">Pahalgam (-3)</option>
+        <option data-offset="-11">Leh (-11)</option>
+        <option data-offset="1">Baramulla (+1)</option>
+        <option data-offset="2">Bandipora, Poonch (+2)</option>
+        <option data-offset="3">Uri (+3)</option>
+        <option data-offset="4">Teetwal, Karnah (+4)</option>
 
-        </select>
-      </div>
+      </select>
     </div>
-    <div id="modal-calendar" class="modal">
+  </div>
+  <div id="modal-calendar" class="modal">
     <div class="modal-background"></div>
     <div class="modal-card">
       <header class="modal-card-head">

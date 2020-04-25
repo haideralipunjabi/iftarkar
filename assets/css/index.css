@@ -209,4 +209,8 @@ input:checked + .slider:before {
 
   }
 }
+
+.fas {
+  margin-right: 7px;
+}
  /* purgecss end ignore */
