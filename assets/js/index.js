@@ -3,6 +3,7 @@ let fiqh;
 let theme = localStorage.getItem("theme");
 let itv;
 let timeOffset = 0;
+hideifandroid();
 if(theme===null){
     theme="light"
 }
@@ -196,7 +197,22 @@ String.prototype.timeOffset = function(offset){
     return t.format('h:mma')
 
 }
+function hideifandroid(){
+    let params = getQueryParameters()
+    if(params["utm_source"]!=="androidapp"){
+        document.getElementById("btn-android").classList.remove("is-hidden")
+    }
+}
 
+function getQueryParameters(){
+    let queryString = window.location.search.substring(1)
+    let params = queryString.split("&")
+    let paramdict = {}
+    for(let param of params){
+        paramdict[param.split("=")[0]] = param.split("=")[1]
+    }
+    return paramdict;
+}
 if('serviceWorker' in navigator) {
     window.addEventListener('load', function() {
       navigator.serviceWorker.register('/sw.js').then(function(registration) {
