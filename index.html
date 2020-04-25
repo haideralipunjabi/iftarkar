@@ -104,7 +104,7 @@
 
     </div>
 
-  </div>
+  
   <h1 class="subtitle has-text-centered">Sahar Ending Time is: <span id="text-sehritime"></span> </h1>
   <h1 class="subtitle has-text-centered">Next Iftaar Time is: <span id="text-iftartime"></span> </h1>
   <div id="timeOffsetGroup" class="has-text-centered">
@@ -124,6 +124,25 @@
       </select>
     </div>
   </div>
+  <div style="margin-top: 20px; margin-bottom: 50px;">
+    <div id="dua-tabs" class="tabs is-centered">
+      <ul>
+        <li><a data-target="sahar">Dua at Sahar</a></li>
+        <li><a data-target="iftar">Dua at Iftar</a></li>
+      </ul>
+    </div>
+    <div class="dua has-text-centered is-hidden" id="dua-sahar">
+      <h1 class="dua-arabic title">وَبِصَوْمِ غَدٍ نَّوَيْتُ مِنْ شَهْرِ رَمَضَانَ</h1>
+      <h1 class="dua-roman title">Wa bisawmi ghadinn nawaiytu min shahri ramadan</h1>
+      <h1 class="dua-english title">I intend to keep the fast for tomorrow in the month of Ramadan</h1>
+    </div>
+    <div class="dua has-text-centered is-hidden" id="dua-iftar">
+      <h1 class="dua-arabic title">اللَّهُمَّ اِنِّى لَكَ صُمْتُ وَبِكَ امنْتُ وَعَليْكَ تَوَكّلتُ وَ عَلى رِزْقِكَ اَفْطَرْتُ</h1>
+      <h1 class="dua-roman title">Allahumma inni laka sumtu wa bika aamantu wa alayka tawakkaltu wa ala rizq-ika-aftartu</h1>
+      <h1 class="dua-english title">O Allah! I fasted for You and I believe in You and I put my trust in You and I break my fast with Your sustenance</h1>
+    </div>
+  </div>
+</div>
   <div id="modal-calendar" class="modal">
     <div class="modal-background"></div>
     <div class="modal-card">
@@ -149,9 +168,7 @@
       </section>
     </div>
   </div>
-  <button onclick="javascript:toggleTheme()" class="fab-theme-button sun">
-
-  </button>
+  <button onclick="javascript:toggleTheme()" class="fab-theme-button sun"></button>
   <footer class="footer">
     <div class="content has-text-centered">
       <p>

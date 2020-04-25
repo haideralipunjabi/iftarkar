@@ -146,6 +146,19 @@ document.getElementById("offsetSelect").addEventListener('change',e=>{
     loadData();
 })
 
+document.querySelectorAll("#dua-tabs li").forEach(item=>{
+    item.addEventListener('click',e=>{
+        document.querySelectorAll("#dua-tabs li").forEach(item=>{
+            item.classList.remove("is-active")
+        })
+        document.querySelectorAll(".dua").forEach(item=>{
+            item.classList.add("is-hidden")
+        })
+        e.target.parentElement.classList.add("is-active")
+        document.getElementById(`dua-${e.target.dataset["target"]}`).classList.remove("is-hidden")
+    });
+})
+
 function launchCalendar(){
     document.querySelector("#modal-calendar tbody").innerHTML = Object.keys(data[fiqh]).map(date=>{
        return `<tr><td>${date}</td><td>${data[fiqh][date]["sehri"].timeOffset(timeOffset)}</td><td>${data[fiqh][date]["iftar"].timeOffset(timeOffset)}</td></tr>`
