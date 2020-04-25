@@ -25,6 +25,8 @@ fetch("/assets/data/timings.json").then(r=>r.json()).then(d=>{
 function loadData(){
     if(data===undefined) return;
     document.getElementById("clock").innerHTML=""
+    document.getElementById("a2clink").href = `assets/calendars/${fiqh}/timings.ics`
+
     clearInterval(itv);
 
     let todaysdate = getTodaysDate(0);
@@ -128,7 +130,7 @@ document.getElementById("change-fiqh").addEventListener('change',e=>{
         fiqh = "ahlesunnat"
     }
     loadData()
-        localStorage.setItem("fiqh",fiqh)
+    localStorage.setItem("fiqh",fiqh)
 })
 
 
@@ -176,6 +178,8 @@ function toggleTheme(){
     localStorage.setItem("theme",theme)
     loadData()
 }
+
+
 if('serviceWorker' in navigator) {
     window.addEventListener('load', function() {
       navigator.serviceWorker.register('/sw.js').then(function(registration) {
