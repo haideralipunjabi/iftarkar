@@ -61,7 +61,7 @@ html {
     width: 50px;
     height: 50px;
     border-radius: 25px;
-    position: absolute;
+    position: fixed;
     right:10px;
     bottom: 50px;
     background-size: contain;
