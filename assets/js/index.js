@@ -33,13 +33,6 @@ function loadData(){
     if(data===undefined) return;
     document.getElementById("clock").innerHTML=""
     document.getElementById("a2clink").href = `assets/calendars/${fiqh}/timings.ics`
-    timeOffset = localStorage.getItem("timeOffset")
-    document.getElementById("timeOffsetGroup").classList.remove("is-hidden")
-    if(fiqh==="shia"){
-        document.getElementById("timeOffsetGroup").classList.add("is-hidden")
-        timeOffset = 0
-    }
-    console.log(timeOffset)
     clearInterval(itv);
 
     let todaysdate = getTodaysDate(0);
