@@ -32,7 +32,7 @@ fetch("/assets/data/timings.json").then(r => r.json()).then(d => {
 function loadData() {
     if (data === undefined) return;
     document.getElementById("clock").innerHTML = ""
-    document.getElementById("a2clink").href = `assets/calendars/${fiqh}/timings.ics`
+    document.getElementById("a2clink").href = `assets/calendars/${fiqh}/timings${getOffsetString()}.ics`
     clearInterval(itv);
 
     let todaysdate = getTodaysDate(0);
@@ -54,7 +54,7 @@ function loadData() {
         document.getElementById("text-iftartime").innerHTML = data[fiqh][tomorrow]["iftar"].timeOffset(timeOffset)
         document.getElementById("text-next").innerHTML = "Sahar"
 
-    } else if (timestamp < data[fiqh][todaysdate]["sehri_timestamp"] * 1000) {
+    } else if (timestamp < (data[fiqh][todaysdate]["sehri_timestamp"]+ (timeOffset * 60)) * 1000) {
         division = 0;
         nexttimestamp = data[fiqh][todaysdate]["sehri_timestamp"]
 
@@ -62,7 +62,7 @@ function loadData() {
         document.getElementById("text-iftartime").innerHTML = data[fiqh][todaysdate]["iftar"].timeOffset(timeOffset)
         document.getElementById("text-next").innerHTML = "Sahar"
 
-    } else if (timestamp < data[fiqh][todaysdate]["iftar_timestamp"] * 1000) {
+    } else if (timestamp < (data[fiqh][todaysdate]["iftar_timestamp"]+ (timeOffset * 60)) * 1000) {
         division = 1;
         nexttimestamp = data[fiqh][todaysdate]["iftar_timestamp"]
 
@@ -217,6 +217,19 @@ function getQueryParameters() {
         paramdict[param.split("=")[0]] = param.split("=")[1]
     }
     return paramdict;
+}
+
+function getOffsetString(){
+    if(offset < 0 ){
+        return "_neg_" + Math.abs(offset).toString()
+    }
+    else if(offset > 0 ){
+        return "_pos_" + offset.toString()
+    }
+    else {
+        return ""
+    }
+
 }
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
