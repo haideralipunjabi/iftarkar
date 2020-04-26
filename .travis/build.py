@@ -10,9 +10,9 @@ time_offsets  = [-11,-3,-2,-1,0,1,2,3,4]
 
 def get_offset_string(offset):
     if offset < 0:
-        return "_neg_" + abs(offset)
+        return "_neg_" + str(abs(offset))
     elif offset > 0:
-        return "_pos_" + abs(offset)
+        return "_pos_" + str(abs(offset))
     else:
         return ""
 def gen_sitemap():
