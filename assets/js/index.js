@@ -178,13 +178,12 @@ document.querySelectorAll("#dua-tabs li").forEach(item => {
         document.getElementById(`dua-${e.target.dataset["target"]}`).classList.remove("is-hidden")
     });
 })
-document.querySelectorAll(".lang-button").forEach(item=>{
-    item.addEventListener('click touchstart',e=>{
-        e.preventDefault();
-        localStorage.setItem("language",e.target.dataset.target)
-        toggleLanguage(e.target.dataset.target)
-    })
-})
+function changeLanguage(e){
+    if(e===0) t = "en"
+    if(e===1) t ="ur"
+    localStorage.setItem("language",t)
+    toggleLanguage(t)
+}
 function launchCalendar() {
     document.querySelector("#modal-calendar tbody").innerHTML = Object.keys(data[fiqh]).map(date => {
         return `<tr><td>${date}</td><td>${data[fiqh][date]["sehri"].timeOffset(timeOffset)}</td><td>${data[fiqh][date]["iftar"].timeOffset(timeOffset)}</td></tr>`

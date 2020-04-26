@@ -65,9 +65,13 @@ select {
 }
 .lang-switch {
   color: var(--text-color);
-  position: absolute; 
-  top: 55px; 
-  left: 20px;
+}
+.lang-switch a {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.lang-switch a:not(:last-child){
+  border-right: 1px solid var(--primary-color);
 }
 .is-center {
     display: block;

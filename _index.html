@@ -103,8 +103,8 @@
     </div>
   </nav>
   <div class="lang-switch">
-    <a class="lang-button" data-target="en">EN</a> |
-    <a class="lang-button" data-target="ur">UR</a>
+    <a class="lang-button" data-target="en" href="javascript:changeLanguage(0)">EN</a>
+    <a class="lang-button" data-target="ur" href="javascript:changeLanguage(1)">UR</a>
   </div>
   <div class="container">
     <h1 id="text-title" class="{% if lang_code=='en' %} title {% endif %} has-text-centered">{% if lang_code=="ur" %}<span id="text-next"></span>{% endif %} {{ title_tlf }} {% if lang_code=="en" %}<b id="text-next"></b>{% endif %}</h1>
