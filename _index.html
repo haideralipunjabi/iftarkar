@@ -74,7 +74,7 @@
         </a>
       </div>
       <div class="navbar-end">
-        <div class="navbar-item has-dropdown is-hoverable">
+        <!-- <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link">
             {{ word_language }}
           </a>
@@ -83,7 +83,7 @@
             <a class="navbar-item lang-button" data-target="en">EN</a>
             <a class="navbar-item lang-button" data-target="ur">UR</a>
           </div>
-        </div>
+        </div> -->
         <div class="navbar-item is-hidden" id="btn-a2hs">
           <a class="button is-link" href="#" class="is-small">
               <i class="fas fa-plus-square"></i>
@@ -102,7 +102,10 @@
       </div>
     </div>
   </nav>
-
+  <div style="position: absolute; top: 55px; left: 20px;">
+    <a class="lang-button" data-target="en">EN</a>|
+    <a class="lang-button" data-target="ur">UR</a>
+  </div>
   <div class="container">
     <h1 id="text-title" class="{% if lang_code=='en' %} title {% endif %} has-text-centered">{% if lang_code=="ur" %}<span id="text-next"></span>{% endif %} {{ title_tlf }} {% if lang_code=="en" %}<b id="text-next"></b>{% endif %}</h1>
 
