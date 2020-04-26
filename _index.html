@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-lang="{{ lang_code }}">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Iftarkar</title>
-  <link rel="stylesheet" href="assets/css/bulma.min.css">
-  <link rel="stylesheet" href="assets/css/fontawesome.min.css">
-  <link rel="stylesheet" href="assets/css/brands.min.css">
-  <link rel="stylesheet" href="assets/css/solid.min.css">
-  <link rel="stylesheet" href="assets/css/index.css">
-  <script src="assets/js/moment.min.js"></script>
+  <title>{{ word_iftarkar }}</title>
+  <link rel="stylesheet" href="/assets/css/bulma.min.css">
+  <link rel="stylesheet" href="/assets/css/fontawesome.min.css">
+  <link rel="stylesheet" href="/assets/css/brands.min.css">
+  <link rel="stylesheet" href="/assets/css/solid.min.css">
+  <link rel="stylesheet" href="/assets/css/index.css">
+  <script src="/assets/js/moment.min.js"></script>
   <!-- Favicons -->
   <meta name="theme-color" content="#3F51B5">
   </meta>
@@ -59,46 +59,52 @@
 
     <div id="navbarBasicExample" class="navbar-menu">
       <div class="navbar-start">
-        <a class="navbar-item" href="#">
-          Home
-        </a>
-
         <a class="navbar-item" onclick="javascript:launchCalendar()">
-          <i class="fas fa-clock"></i>Timings
+          <i class="fas fa-clock"></i>{{ word_timings }}
         </a>
         <a class="navbar-item" id="a2clink" href="assets/calendars/ahlesunnat/timings.ics">
-          <i class="fas fa-calendar-alt"></i>Add to Calendar
+          <i class="fas fa-calendar-alt"></i>{{ word_addtocalendar }}
         </a>
         <a class="navbar-item navswitch">
           <label class="switch" style="margin-right: 5px;">
             <input type="checkbox" id="change-fiqh">
             <span class="slider round"></span>
           </label>
-          Fikkah Jaffaria
+          {{ word_fikkahjaffaria }}
         </a>
       </div>
       <div class="navbar-end">
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            {{ word_language }}
+          </a>
+    
+          <div class="navbar-dropdown">
+            <a class="navbar-item lang-button" data-target="en">EN</a>
+            <a class="navbar-item lang-button" data-target="ur">UR</a>
+          </div>
+        </div>
         <div class="navbar-item is-hidden" id="btn-a2hs">
           <a class="button is-link" href="#" class="is-small">
               <i class="fas fa-plus-square"></i>
-            </span>Download App</a>
+            </span>{{ word_downloadapp }}</a>
         </div>
         <div class="navbar-item is-hidden" id="btn-android">
           <a class="button is-success" target="_blank" href="https://play.google.com/store/apps/details?id=org.hackesta.iftarkar" class="is-small">
               <i class="fab fa-google-play"></i>
-            </span>Play Store</a>
+            </span>{{ word_playstore }}</a>
         </div>
         <div class="navbar-item">
           <a class="button is-info" target="_blank" href="mailto:developer@hackesta.org"><span class="is-small">
               <i class="fas fa-envelope"></i>
-            </span>Mail Us</a>
+            </span>{{ word_mailus }}</a>
         </div>
       </div>
     </div>
   </nav>
 
   <div class="container">
-    <h1 id="text-title" class="title has-text-centered">Time left for <b id="text-next"></b></h1>
+    <h1 id="text-title" class="title has-text-centered">{% if lang_code=="ur" %}<b id="text-next"></b>{% endif %} {{ title_tlf }} {% if lang_code=="en" %}<b id="text-next"></b>{% endif %}</h1>
 
     <div>
       <h1 class="title has-text-centered" id="clock"></h1>
@@ -110,30 +116,35 @@
     </div>
 
   
-  <h1 class="subtitle has-text-centered">Sahar Ending Time is: <span id="text-sehritime"></span> </h1>
-  <h1 class="subtitle has-text-centered">Next Iftaar Time is: <span id="text-iftartime"></span> </h1>
+  <h1 class="subtitle has-text-centered">{{ subtitle_saharending }}: <span id="text-sehritime"></span> </h1>
+  <h1 class="subtitle has-text-centered">{{ subtitle_iftarnext }}: <span id="text-iftartime"></span> </h1>
   <div id="timeOffsetGroup" class="has-text-centered">
-    <h1 class="subtitle is-6" style="display: inline-block; line-height: 2.5rem; margin-right: 10px;">Change Area: </h1>
+    {% if lang_code=="en" %}
+    <h1 class="subtitle is-6" style="display: inline-block; line-height: 2.5rem; margin-right: 10px;">{{ subtitle_changearea }}: </h1>
+    {% endif %}
     <div class="select">
       <select id="offsetSelect">
         <option data-offset="0"></option>
-        <option data-offset="-1">Pulwama, Kulgam, Harmukh (-1)</option>
-        <option data-offset="-2">Anantnag, Tral, Kud (-2)</option>
-        <option data-offset="-3">Pahalgam (-3)</option>
-        <option data-offset="-11">Leh (-11)</option>
-        <option data-offset="1">Baramulla (+1)</option>
-        <option data-offset="2">Bandipora, Poonch (+2)</option>
-        <option data-offset="3">Uri (+3)</option>
-        <option data-offset="4">Teetwal, Karnah (+4)</option>
+        <option data-offset="-1">{{ area_neg1 }}</option>
+        <option data-offset="-2">{{ area_neg2 }})</option>
+        <option data-offset="-3">{{ area_neg3 }}</option>
+        <option data-offset="-11">{{ area_neg11 }}</option>
+        <option data-offset="1">{{ area_pos1 }}</option>
+        <option data-offset="2">{{ area_pos2 }}</option>
+        <option data-offset="3">{{ area_pos3 }}</option>
+        <option data-offset="4">{{ area_pos4 }}</option>
 
       </select>
     </div>
+    {% if lang_code=="ur" %}
+    <h1 class="subtitle is-6" style="display: inline-block; line-height: 2.5rem; margin-right: 10px;">:{{ subtitle_changearea }}</h1>
+    {% endif %}
   </div>
   <div style="margin-top: 20px; margin-bottom: 50px; margin-left: 40px; margin-right: 40px;">
     <div id="dua-tabs" class="tabs is-centered">
       <ul>
-        <li><a data-target="sahar">Dua at Sahar</a></li>
-        <li><a data-target="iftar">Dua at Iftar</a></li>
+        <li><a data-target="sahar">{{ dua_sahar }}</a></li>
+        <li><a data-target="iftar">{{ dua_iftar }}</a></li>
       </ul>
     </div>
     <div class="dua has-text-centered is-hidden" id="dua-sahar">
@@ -152,7 +163,7 @@
     <div class="modal-background"></div>
     <div class="modal-card">
       <header class="modal-card-head">
-        <p class="modal-card-title">Calendar</p>
+        <p class="modal-card-title">{{ word_timings }}</p>
         <button class="delete" aria-label="close" onclick="javascript:toggleModal('modal-calendar')"></button>
       </header>
       <section class="modal-card-body">
@@ -160,9 +171,9 @@
           <table class="table is-bordered is-striped is-fullwidth">
             <thead>
               <tr>
-                <th>Date</th>
-                <th>Sehri</th>
-                <th>Iftar</th>
+                <th>{{ word_date }}</th>
+                <th>{{ word_sahar }}</th>
+                <th>{{ word_iftar }}</th>
               </tr>
             </thead>
             <tbody>
@@ -177,12 +188,15 @@
   <footer class="footer">
     <div class="content has-text-centered">
       <p>
-        <strong>Iftarkar</strong> by <a href="https://haideralipunjabi.com" target="_blank">Haider Ali Punjabi</a>|<a
-          href="https://hackesta.org" target="_blank">Hackesta</a>.
+        <strong>Iftarkar</strong> -
+
+        <a href="https://haideralipunjabi.com" target="_blank">Haider Ali Punjabi</a> |
+        <a
+          href="https://hackesta.org" target="_blank">Hackesta</a>
       </p>
     </div>
   </footer>
-  <script src="assets/js/index.js"></script>
+  <script src="/assets/js/index.js"></script>
 </body>
 
 </html>

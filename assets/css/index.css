@@ -1,4 +1,12 @@
 /* purgecss start ignore */
+@font-face {
+  font-family: Katibeh;
+  src: url("/assets/webfonts/katibeh.ttf")
+}
+@font-face {
+  font-family: Jameel Noori;
+  src: url("/assets/webfonts/Jameel_Noori.ttf")
+}
 
 :root {
     --container-padding-top: 80px;
@@ -6,19 +14,45 @@
     --primary-color: #3F51B5;
     --progress-color: #3F51B5;
     --progrss-background-color: #CFD4ED;
+    --fontfamily:BlinkMacSystemFont,-apple-system,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    --factor:1;
     --title-font: 3rem;
     --clock-font: 10rem;
-}
+  }
 [data-theme="dark"] {
   --background-color: #131836;
   --primary-color: #3F51B5;
   --text-color: #ffffff;
+}
+
+[data-lang="ur"] .tabs {
+  font-size: 2em;
+}
+[data-lang="ur"] .navbar {
+  font-size: 1.5em;
+}
+[data-lang="ur"] .button {
+  font-size: 1.5rem;
+}
+[data-lang="ur"] .subtitle {
+  font-size: 2.5em;
+}
+[data-lang="ur"] {
+  --fontfamily: Jameel Noori;
+  --factor: 1.5;
 }
 .title, .subtitle,.tabs a {
   color: var(--text-color);
 }
 html {
   background-color: var(--background-color);
+  font-family: var(--fontfamily);
+}
+body {
+  font-family: var(--fontfamily);
+}
+select {
+  font-family: var(--fontfamily);
 }
 .navbar {
   background-color: var(--primary-color) !important;
@@ -32,7 +66,7 @@ html {
     padding-top: var(--container-padding-top);
 }
 #text-title{
-    font-size: var(--title-font);
+    font-size: calc(var(--title-font)*var(--factor));
 }
 #clock {
   font-size: var(--clock-font);
@@ -218,5 +252,9 @@ input:checked + .slider:before {
 
 .select select {
   font-size: 0.8em;
+}
+
+.footer, .dua, .lang-button{
+  font-family: BlinkMacSystemFont,-apple-system,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
  /* purgecss end ignore */

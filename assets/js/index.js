@@ -1,9 +1,31 @@
+const NUMDICT = {
+    "0":"٠",
+    "1":"١",
+    "2":"٢",
+    "3":"٣",
+    "4":"۴",
+    "5":"٥",
+    "6":"٦",
+    "7":"٧",
+    "8":"٨",
+    "9":"٩",
+    "am":"صبح",
+    "pm":"شام"
+}
+
 let data;
+let langdata;
 let fiqh;
 let theme = localStorage.getItem("theme");
 let itv;
 let timeOffset = 0;
 let deferredPrompt;
+let lang = document.querySelector("html").dataset["lang"]
+
+if(window.location.pathname.replace(/\//g,"")==="" && localStorage.getItem("language")!==null && lang!==localStorage.getItem("language")){
+    toggleLanguage(localStorage.getItem("language"))
+}
+
 hideifandroid();
 if (theme === null) {
     theme = "light"
@@ -11,10 +33,16 @@ if (theme === null) {
 if (theme === "dark") {
     toggleTheme();
 }
-fetch("/assets/data/timings.json").then(r => r.json()).then(d => {
+let promises = [
+    fetch("/assets/data/timings.json").then(r => r.json()),
+    fetch("/assets/data/langs.json").then(r=>r.json())
+]
+Promise.all(promises).then(d => {
     fiqh = localStorage.getItem("fiqh");
     timeOffset = localStorage.getItem("timeOffset")
-    data = d;
+    data = d[0]
+    console.log(d[1]);
+    langdata = d[1].find(l=>(l["lang_code"]===lang))["data"]
     if (fiqh === null) {
         fiqh = "ahlesunnat"
         localStorage.setItem("fiqh", fiqh)
@@ -50,32 +78,32 @@ function loadData() {
     if (!Object.keys(data[fiqh]).includes(todaysdate)) {
         division = 2;
         nexttimestamp = data[fiqh][tomorrow]["sehri_timestamp"]
-        document.getElementById("text-sehritime").innerHTML = data[fiqh][tomorrow]["sehri"].timeOffset(timeOffset)
-        document.getElementById("text-iftartime").innerHTML = data[fiqh][tomorrow]["iftar"].timeOffset(timeOffset)
-        document.getElementById("text-next").innerHTML = "Sahar"
+        document.getElementById("text-sehritime").innerHTML = data[fiqh][tomorrow]["sehri"].timeOffset(timeOffset).translate()
+        document.getElementById("text-iftartime").innerHTML = data[fiqh][tomorrow]["iftar"].timeOffset(timeOffset).translate()
+        document.getElementById("text-next").innerHTML = langdata["word_sahar"]
 
     } else if (timestamp < (data[fiqh][todaysdate]["sehri_timestamp"]+ (timeOffset * 60)) * 1000) {
         division = 0;
         nexttimestamp = data[fiqh][todaysdate]["sehri_timestamp"]
 
-        document.getElementById("text-sehritime").innerHTML = data[fiqh][todaysdate]["sehri"].timeOffset(timeOffset)
-        document.getElementById("text-iftartime").innerHTML = data[fiqh][todaysdate]["iftar"].timeOffset(timeOffset)
-        document.getElementById("text-next").innerHTML = "Sahar"
+        document.getElementById("text-sehritime").innerHTML = data[fiqh][todaysdate]["sehri"].timeOffset(timeOffset).translate()
+        document.getElementById("text-iftartime").innerHTML = data[fiqh][todaysdate]["iftar"].timeOffset(timeOffset).translate()
+        document.getElementById("text-next").innerHTML = langdata["word_sahar"]
 
     } else if (timestamp < (data[fiqh][todaysdate]["iftar_timestamp"]+ (timeOffset * 60)) * 1000) {
         division = 1;
         nexttimestamp = data[fiqh][todaysdate]["iftar_timestamp"]
 
-        document.getElementById("text-sehritime").innerHTML = data[fiqh][tomorrow]["sehri"].timeOffset(timeOffset)
-        document.getElementById("text-iftartime").innerHTML = data[fiqh][todaysdate]["iftar"].timeOffset(timeOffset)
-        document.getElementById("text-next").innerHTML = "Iftar"
+        document.getElementById("text-sehritime").innerHTML = data[fiqh][tomorrow]["sehri"].timeOffset(timeOffset).translate()
+        document.getElementById("text-iftartime").innerHTML = data[fiqh][todaysdate]["iftar"].timeOffset(timeOffset).translate()
+        document.getElementById("text-next").innerHTML = langdata["word_iftar"]
 
     } else {
         division = 2;
         nexttimestamp = data[fiqh][tomorrow]["sehri_timestamp"]
-        document.getElementById("text-sehritime").innerHTML = data[fiqh][tomorrow]["sehri"].timeOffset(timeOffset)
-        document.getElementById("text-iftartime").innerHTML = data[fiqh][tomorrow]["iftar"].timeOffset(timeOffset)
-        document.getElementById("text-next").innerHTML = "Sahar"
+        document.getElementById("text-sehritime").innerHTML = data[fiqh][tomorrow]["sehri"].timeOffset(timeOffset).translate()
+        document.getElementById("text-iftartime").innerHTML = data[fiqh][tomorrow]["iftar"].timeOffset(timeOffset).translate()
+        document.getElementById("text-next").innerHTML = langdata["word_sahar"]
 
     }
 
@@ -113,7 +141,7 @@ function loadData() {
             document.querySelector(".progress-value").innerHTML = `${per.toFixed(2)}%`
         }
         let diff = moment.duration(moment(nexttimestamp * 1000).diff(moment(moment.now())))._data
-        clock.innerHTML = `${diff.hours.toString().padStart(2,"0")}:${diff.minutes.toString().padStart(2,"0")}:${diff.seconds.toString().padStart(2,"0")}`
+        clock.innerHTML = `${diff.hours.toString().padStart(2,"0")}:${diff.minutes.toString().padStart(2,"0")}:${diff.seconds.toString().padStart(2,"0")}`.translate()
     }, 1000)
 }
 
@@ -150,7 +178,13 @@ document.querySelectorAll("#dua-tabs li").forEach(item => {
         document.getElementById(`dua-${e.target.dataset["target"]}`).classList.remove("is-hidden")
     });
 })
-
+document.querySelectorAll(".lang-button").forEach(item=>{
+    item.addEventListener('click',e=>{
+        e.preventDefault();
+        localStorage.setItem("language",e.target.dataset.target)
+        toggleLanguage(e.target.dataset.target)
+    })
+})
 function launchCalendar() {
     document.querySelector("#modal-calendar tbody").innerHTML = Object.keys(data[fiqh]).map(date => {
         return `<tr><td>${date}</td><td>${data[fiqh][date]["sehri"].timeOffset(timeOffset)}</td><td>${data[fiqh][date]["iftar"].timeOffset(timeOffset)}</td></tr>`
@@ -195,11 +229,28 @@ function toggleTheme() {
     loadData()
 }
 
+function toggleLanguage(l){
+    if(l!=="en"){
+        window.location.href = `/${l}/`+window.location.search
+        return
+    }
+    window.location.href = "/"+window.location.search
+
+}
+
 String.prototype.timeOffset = function (offset) {
     let t = moment(this, 'h:mma')
     t.add(offset, 'minute')
     return t.format('h:mma')
 
+}
+String.prototype.translate = function(){
+    if(lang==="en") return this;
+    let s = this;
+    Object.entries(NUMDICT).forEach(i=>{
+        s=s.replace(new RegExp(i[0],"g"),i[1])
+    })
+    return s;
 }
 
 function hideifandroid() {

@@ -5,8 +5,12 @@ from ics import Calendar, Event
 import json
 import arrow
 from datetime import datetime as dt
+import jinja2
+
 onlyfiles = [f for f in listdir() if splitext(f)[1]==".html"]
 time_offsets  = [-11,-3,-2,-1,0,1,2,3,4]
+templateLoader = jinja2.FileSystemLoader(searchpath="./")
+templateEnv = jinja2.Environment(loader=templateLoader)
 
 def get_offset_string(offset):
     if offset < 0:
@@ -15,6 +19,16 @@ def get_offset_string(offset):
         return "_pos_" + str(abs(offset))
     else:
         return ""
+
+def gen_langs():
+    langdata = json.load(open("assets/data/langs.json","r"))
+    jinja_env = jinja2.Environment(loader=templateLoader, undefined=jinja2.make_logging_undefined(base=jinja2.DebugUndefined))
+    template = jinja_env.get_template("_index.html")
+    for lang in langdata:
+        os.system("mkdir %s"%(lang["lang_code"]))
+        print(lang["data"])
+        print(template.render(lang_code=lang["lang_code"],**lang["data"]), file=open("%s/index.html"%(lang["lang_code"]),"w"))
+
 def gen_sitemap():
     sitemap_file = open("sitemap.xml","w")
     sitemap_file.write('<?xml version="1.0" encoding="UTF-8"?>')
@@ -58,6 +72,6 @@ def gen_ics():
                 my_file.writelines(c)
 
 
-
-gen_sitemap()
-gen_ics()
+gen_langs()
+# gen_sitemap()
+# gen_ics()
