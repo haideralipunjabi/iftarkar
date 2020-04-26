@@ -104,10 +104,10 @@
   </nav>
 
   <div class="container">
-    <h1 id="text-title" class="title has-text-centered">{% if lang_code=="ur" %}<b id="text-next"></b>{% endif %} {{ title_tlf }} {% if lang_code=="en" %}<b id="text-next"></b>{% endif %}</h1>
+    <h1 id="text-title" class="{% if lang_code=='en' %} title {% endif %} has-text-centered">{% if lang_code=="ur" %}<span id="text-next"></span>{% endif %} {{ title_tlf }} {% if lang_code=="en" %}<b id="text-next"></b>{% endif %}</h1>
 
     <div>
-      <h1 class="title has-text-centered" id="clock"></h1>
+      <h1 class="{% if lang_code=='en' %} title {% endif %} has-text-centered" id="clock"></h1>
     </div>
     <div class="progress-wrapper" style="margin-bottom: 20px; margin-top: 20px;">
       <progress id="timeprogress" class="progress is-custom" value="0" max="100">0</progress>
@@ -137,7 +137,7 @@
       </select>
     </div>
     {% if lang_code=="ur" %}
-    <h1 class="subtitle is-6" style="display: inline-block; line-height: 2.5rem; margin-right: 10px;">:{{ subtitle_changearea }}</h1>
+    <h1 class="subtitle is-6" style="display: inline-block; line-height: 0.5rem; margin-right: 10px;">:{{ subtitle_changearea }}</h1>
     {% endif %}
   </div>
   <div style="margin-top: 20px; margin-bottom: 50px; margin-left: 40px; margin-right: 40px;">
