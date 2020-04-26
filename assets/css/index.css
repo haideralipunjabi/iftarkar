@@ -63,6 +63,12 @@ select {
 .navbar {
   background-color: var(--primary-color) !important;
 }
+.lang-switch {
+  color: var(--text-color);
+  position: absolute; 
+  top: 55px; 
+  left: 20px;
+}
 .is-center {
     display: block;
     margin-left: auto;
@@ -93,7 +99,7 @@ select {
   }
 
   .footer strong, a {
-    color:#ffffff;
+    color:var(--text-color)
   }
 
   .fab-theme-button {
