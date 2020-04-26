@@ -29,20 +29,7 @@ def gen_langs():
         print(lang["data"])
         print(template.render(lang_code=lang["lang_code"],**lang["data"]), file=open("%s/index.html"%(lang["lang_code"]),"w"))
 
-def gen_sitemap():
-    sitemap_file = open("sitemap.xml","w")
-    sitemap_file.write('<?xml version="1.0" encoding="UTF-8"?>')
-    sitemap_file.write('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')
-    for f in onlyfiles:
-        sitemap_file.write(
-            '''
-            <url>
-                <loc>%s</loc>
-            </url>
-            '''
-        %("https://iftarkar.com/"+f.replace("index","").replace(".html","")))
-    sitemap_file.write('</urlset>')
-    sitemap_file.close()
+
 
 def gen_ics():
     data = json.load(open("assets/data/timings.json"))
@@ -73,5 +60,5 @@ def gen_ics():
 
 
 gen_langs()
-# gen_sitemap()
-# gen_ics()
+
+gen_ics()
