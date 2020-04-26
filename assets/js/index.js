@@ -179,7 +179,7 @@ document.querySelectorAll("#dua-tabs li").forEach(item => {
     });
 })
 document.querySelectorAll(".lang-button").forEach(item=>{
-    item.addEventListener('click',e=>{
+    item.addEventListener('click touchstart',e=>{
         e.preventDefault();
         localStorage.setItem("language",e.target.dataset.target)
         toggleLanguage(e.target.dataset.target)
