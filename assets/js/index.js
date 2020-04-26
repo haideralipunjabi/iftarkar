@@ -220,11 +220,11 @@ function getQueryParameters() {
 }
 
 function getOffsetString(){
-    if(offset < 0 ){
-        return "_neg_" + Math.abs(offset).toString()
+    if(timeOffset < 0 ){
+        return "_neg_" + Math.abs(timeOffset).toString()
     }
-    else if(offset > 0 ){
-        return "_pos_" + offset.toString()
+    else if(timeOffset > 0 ){
+        return "_pos_" + timeOffset.toString()
     }
     else {
         return ""
