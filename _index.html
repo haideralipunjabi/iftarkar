@@ -105,9 +105,11 @@
   <div class="lang-switch">
     <a class="lang-button" data-target="en" href="javascript:changeLanguage(0)">EN</a>
     <a class="lang-button" data-target="ur" href="javascript:changeLanguage(1)">UR</a>
+    <!-- <a class="lang-button" data-target="kmr" href="javascript:changeLanguage(2)">KMR</a> -->
+
   </div>
   <div class="container">
-    <h1 id="text-title" class="{% if lang_code=='en' %} title {% endif %} has-text-centered">{% if lang_code=="ur" %}<span id="text-next"></span>{% endif %} {{ title_tlf }} {% if lang_code=="en" %}<b id="text-next"></b>{% endif %}</h1>
+    <h1 id="text-title" class="{% if lang_code=='en' %} title {% endif %} has-text-centered">{% if lang_code=="ur" or lang_code=="kmr" %}<span id="text-next"></span>{% endif %} {{ title_tlf }} {% if lang_code=="en" %}<b id="text-next"></b>{% endif %}</h1>
 
     <div>
       <h1 class="{% if lang_code=='en' %} title {% endif %} has-text-centered" id="clock"></h1>
@@ -119,8 +121,8 @@
     </div>
 
   
-  <h1 class="subtitle has-text-centered">{{ subtitle_saharending }}: <span id="text-sehritime"></span> </h1>
-  <h1 class="subtitle has-text-centered">{{ subtitle_iftarnext }}: <span id="text-iftartime"></span> </h1>
+  <h1 class="subtitle has-text-centered" style="line-height: 1.5;"><button id="alarm-sahar" style="margin-right: 10px;" class="is-hidden button is-small is-rounded is-info"><span class="icon is-small"><i style="margin:0;" class="fas fa-bell"></i></span></button> {{ subtitle_saharending }}: <span id="text-sehritime"></span></h1>
+  <h1 class="subtitle has-text-centered"  style="line-height: 1.5;"><button id="alarm-iftar" style="margin-right: 10px;" class="is-hidden button is-small is-rounded is-info"><span class="icon is-small"><i style="margin:0;" class="fas fa-bell"></i></span></button> {{ subtitle_iftarnext }}: <span id="text-iftartime"></span> </h1>
   <div id="timeOffsetGroup" class="has-text-centered">
     {% if lang_code=="en" %}
     <h1 class="subtitle is-6" style="display: inline-block; line-height: 2.5rem; margin-right: 10px;">{{ subtitle_changearea }}: </h1>
@@ -140,7 +142,7 @@
 
       </select>
     </div>
-    {% if lang_code=="ur" %}
+    {% if lang_code=="ur"  or lang_code=="kmr" %}
     <h1 class="subtitle is-6" style="display: inline-block; line-height: 0.5rem; margin-right: 10px;">:{{ subtitle_changearea }}</h1>
     {% endif %}
   </div>

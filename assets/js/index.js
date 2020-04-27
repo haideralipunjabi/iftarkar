@@ -95,7 +95,7 @@ function loadData() {
         document.getElementById("text-sehritime").innerHTML = data[fiqh][tomorrow]["sehri"].timeOffset(timeOffset).translate()
         document.getElementById("text-iftartime").innerHTML = data[fiqh][tomorrow]["iftar"].timeOffset(timeOffset).translate()
         document.getElementById("text-next").innerHTML = langdata["word_sahar"]
-
+        bindAlarms(data[fiqh][tomorrow]["sehri"].timeOffset(timeOffset),data[fiqh][tomorrow]["iftar"].timeOffset(timeOffset))
     } else if (timestamp < (data[fiqh][todaysdate]["sehri_timestamp"]+ (timeOffset * 60)) * 1000) {
         division = 0;
         nexttimestamp = data[fiqh][todaysdate]["sehri_timestamp"]
@@ -103,6 +103,7 @@ function loadData() {
         document.getElementById("text-sehritime").innerHTML = data[fiqh][todaysdate]["sehri"].timeOffset(timeOffset).translate()
         document.getElementById("text-iftartime").innerHTML = data[fiqh][todaysdate]["iftar"].timeOffset(timeOffset).translate()
         document.getElementById("text-next").innerHTML = langdata["word_sahar"]
+        bindAlarms(data[fiqh][todaysdate]["sehri"].timeOffset(timeOffset),data[fiqh][todaysdate]["iftar"].timeOffset(timeOffset))
 
     } else if (timestamp < (data[fiqh][todaysdate]["iftar_timestamp"]+ (timeOffset * 60)) * 1000) {
         division = 1;
@@ -111,6 +112,7 @@ function loadData() {
         document.getElementById("text-sehritime").innerHTML = data[fiqh][tomorrow]["sehri"].timeOffset(timeOffset).translate()
         document.getElementById("text-iftartime").innerHTML = data[fiqh][todaysdate]["iftar"].timeOffset(timeOffset).translate()
         document.getElementById("text-next").innerHTML = langdata["word_iftar"]
+        bindAlarms(data[fiqh][tomorrow]["sehri"].timeOffset(timeOffset),data[fiqh][todaysdate]["iftar"].timeOffset(timeOffset))
 
     } else {
         division = 2;
@@ -118,6 +120,7 @@ function loadData() {
         document.getElementById("text-sehritime").innerHTML = data[fiqh][tomorrow]["sehri"].timeOffset(timeOffset).translate()
         document.getElementById("text-iftartime").innerHTML = data[fiqh][tomorrow]["iftar"].timeOffset(timeOffset).translate()
         document.getElementById("text-next").innerHTML = langdata["word_sahar"]
+        bindAlarms(data[fiqh][tomorrow]["sehri"].timeOffset(timeOffset),data[fiqh][tomorrow]["iftar"].timeOffset(timeOffset))
 
     }
 
@@ -208,6 +211,7 @@ document.querySelectorAll("#dua-tabs li").forEach(item => {
 function changeLanguage(e){
     if(e===0) t = "en"
     if(e===1) t ="ur"
+    if(e===3) t ="kmr"
     localStorage.setItem("language",t)
     toggleLanguage(t)
 }
@@ -268,6 +272,10 @@ String.prototype.timeOffset = function (offset) {
     let t = moment(this, 'h:mma')
     t.add(offset, 'minute')
     return t.format('h:mma')
+}
+String.prototype.tf = function(){
+    let t = moment(this, 'h:mma')
+    return t.format('H:mm')
 
 }
 String.prototype.translate = function(){
@@ -284,6 +292,12 @@ function hideifandroid() {
     if (params["utm_source"] !== "androidapp") {
         document.getElementById("btn-android").classList.remove("is-hidden")
     }
+    if (params["utm_source"] === "androidapp") {
+        document.getElementById("alarm-sahar").classList.remove("is-hidden")
+        document.getElementById("alarm-iftar").classList.remove("is-hidden")
+
+    }
+    
 }
 
 function getQueryParameters() {
@@ -307,6 +321,17 @@ function getOffsetString(){
         return ""
     }
 
+}
+
+function bindAlarms(sahar,iftar){
+    sahar = sahar.tf().split(":")
+    iftar = iftar.tf().split(":")
+    document.getElementById('alarm-sahar').addEventListener('click',e=>{
+        window.location =`intent://iftarkar.com?hour=${sahar[0]}&minute=${sahar[1]}&message=Sahar#Intent;scheme=myscheme;package=org.hackesta.iftarkar;action=alarmaction;end`
+    })
+    document.getElementById('alarm-iftar').addEventListener('click',e=>{
+        window.location =`intent://iftarkar.com?hour=${iftar[0]}&minute=${iftar[1]}&message=Iftar#Intent;scheme=myscheme;package=org.hackesta.iftarkar;action=alarmaction;end`
+    })
 }
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {

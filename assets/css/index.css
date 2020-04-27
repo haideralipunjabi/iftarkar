@@ -4,6 +4,8 @@
   src: url("/assets/webfonts/Fajer.ttf")
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Amiri&display=swap');
+
 :root {
     --container-padding-top: 80px;
     --background-color: #ECEEF8;
@@ -43,6 +45,32 @@
 [data-lang="ur"] {
   --fontfamily: Fajer;
   --factor: 1.5;
+}
+[data-lang="kmr"] .tabs {
+  font-size: 2em;
+}
+[data-lang="kmr"] .navbar {
+  font-size: 1.5em;
+  line-height: 1.5em;
+}
+[data-lang="kmr"] .navbar .button {
+  font-family: BlinkMacSystemFont,-apple-system,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+/* [data-lang="ur"] .button {
+  font-size: 1.5rem;
+} */
+[data-lang="kmr"] .subtitle {
+  font-size: 2.5em;
+}
+[data-lang="kmr"] select {
+  direction: rtl;
+}
+[data-lang="kmr"] {
+  --fontfamily: 'Amiri', serif;
+  --factor: 1.5;
+}
+[data-lang="kmr"] #text-sehritime, [data-lang="kmr"] #text-iftartime, [data-lang="kmr"] #clock {
+  font-family: Fajer !important;
 }
 .title, .subtitle,.tabs a {
   color: var(--text-color);

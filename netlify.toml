@@ -1,0 +1,5 @@
+[dev]
+    [[redirects]]
+    from = "/"
+    to = "/en/"
+    status = 200

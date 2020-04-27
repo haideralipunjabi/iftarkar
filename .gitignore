@@ -3,3 +3,6 @@ assets/calendars
 ur/*
 en/*
 extra/*
+kmr/*
+# Local Netlify folder
+.netlify
