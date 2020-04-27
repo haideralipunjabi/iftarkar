@@ -49,16 +49,30 @@ Promise.all(promises).then(d => {
     } else if (fiqh === "shia") {
         document.getElementById("change-fiqh").checked = true;
     }
+    
     if (timeOffset === null) {
         timeOffset = 0;
     } else {
         document.querySelector(`#offsetSelect option[data-offset='${timeOffset}']`).selected = true;
+    }
+    if(fiqh==="kargil"){
+        document.getElementById("change-fiqh").checked = true;
+        document.querySelector("#offsetSelect option[data-special=kargil]").selected =true;
     }
     loadData()
 })
 
 function loadData() {
     if (data === undefined) return;
+    document.querySelector("option[data-special=kargil]").classList.add("is-hidden")
+    // document.getElementById("offsetSelect").selectedIndex = 0
+    console.log(fiqh)
+    if(fiqh==="shia" || fiqh==="kargil"){
+        document.querySelector("option[data-special=kargil]").classList.remove("is-hidden")
+    }
+    if(fiqh==="kargil"){
+        timeOffset = 0;
+    }
     document.getElementById("clock").innerHTML = ""
     document.getElementById("a2clink").href = `assets/calendars/${fiqh}/timings${getOffsetString()}.ics`
     clearInterval(itv);
@@ -157,11 +171,24 @@ document.getElementById("change-fiqh").addEventListener('change', e => {
     } else {
         fiqh = "ahlesunnat"
     }
+    document.querySelector(`#offsetSelect option[data-offset='${timeOffset}']`).selected = true;
+
     loadData()
     localStorage.setItem("fiqh", fiqh)
 })
 document.getElementById("offsetSelect").addEventListener('change', e => {
     timeOffset = parseInt(e.target.selectedOptions[0].dataset["offset"])
+    if(e.target.selectedOptions[0].dataset.special === "kargil"){
+        fiqh = "kargil"
+        localStorage.setItem("fiqh", fiqh)
+    }
+    else {
+            if (document.getElementById("change-fiqh").checked) {
+                fiqh = "shia"
+            } else {
+                fiqh = "ahlesunnat"
+            }
+    }
     localStorage.setItem("timeOffset", timeOffset)
     loadData();
 })
