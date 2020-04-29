@@ -76,7 +76,17 @@ function loadData() {
     document.getElementById("clock").innerHTML = ""
     document.getElementById("a2clink").href = `assets/calendars/${fiqh}/timings${getOffsetString()}.ics`
     clearInterval(itv);
-
+    let hDate = (moment(moment.now()).diff(moment("25/04/2020",'%D/%M/%Y'),'days') +1).toString()
+    let hMonth = "Ramadan"
+    let hSym = "AH" 
+    if(lang !== "en"){
+        hMonth = 'رمضان'
+        hSym = "ھ"
+    }
+    else {
+        hDate += "th" 
+    }
+    document.getElementById('dateToday').innerHTML = `${hDate.translate()} ${hMonth} ${(1441).toString().translate()} ${hSym}`
     let todaysdate = getTodaysDate(0);
     let tomorrow = getTodaysDate(1);
     let yesterday = getTodaysDate(-1);
