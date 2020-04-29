@@ -174,8 +174,7 @@ function loadData() {
 
 
 function getTodaysDate(doffset) {
-    d = new Date();
-    return `${(d.getDate()+doffset).toString().padStart(2,"0")}/${(d.getMonth()+1).toString().padStart(2,"0")}/${d.getFullYear()}`
+    return moment(moment.now()).add(doffset,'days').format("DD/MM/YYYY")
 }
 
 document.getElementById("change-fiqh").addEventListener('change', e => {
