@@ -211,7 +211,7 @@ document.querySelectorAll("#dua-tabs li").forEach(item => {
 function changeLanguage(e){
     if(e===0) t = "en"
     if(e===1) t ="ur"
-    if(e===3) t ="kmr"
+    if(e===2) t ="kmr"
     localStorage.setItem("language",t)
     toggleLanguage(t)
 }
