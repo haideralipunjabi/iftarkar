@@ -5,7 +5,9 @@
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Amiri&display=swap');
-
+html{
+  overflow: auto;
+}
 :root {
     --container-padding-top: 80px;
     --background-color: #ECEEF8;
