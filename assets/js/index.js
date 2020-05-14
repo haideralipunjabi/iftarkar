@@ -64,6 +64,14 @@ Promise.all(promises).then(d => {
 
 function loadData() {
     if (data === undefined) return;
+    if((fiqh==="ahlesunnat" && moment.now() >= 1590329100*1000)||
+        (fiqh==="shia"&&moment.now()>=1590329640*1000)||
+        (fiqh==="kargil" && moment.now() > 1590329580*1000) ){
+            document.getElementById("mainbody").style.display="none"
+            document.getElementById("em").style.display="block";
+            console.log("em")
+        return
+    }
     document.querySelector("option[data-special=kargil]").classList.add("is-hidden")
     // document.getElementById("offsetSelect").selectedIndex = 0
     console.log(fiqh)
@@ -91,14 +99,9 @@ function loadData() {
     let tomorrow = getTodaysDate(1);
     let yesterday = getTodaysDate(-1);
     let timestamp = (new Date()).getTime()
-    // let todaysdate = "25/04/2020"
-    // let tomorrow = "26/04/2020"
-    // let d = new Date();
-    // d.setDate(25);
-    // d.setHours(19,12)
-    // let timestamp = d.getTime()
     let division;
     let nexttimestamp
+    console.log(tomorrow)
     if (!Object.keys(data[fiqh]).includes(todaysdate)) {
         division = 2;
         nexttimestamp = data[fiqh][tomorrow]["sehri_timestamp"]
@@ -106,7 +109,9 @@ function loadData() {
         document.getElementById("text-iftartime").innerHTML = data[fiqh][tomorrow]["iftar"].timeOffset(timeOffset).translate()
         document.getElementById("text-next").innerHTML = langdata["word_sahar"]
         bindAlarms(data[fiqh][tomorrow]["sehri"].timeOffset(timeOffset),data[fiqh][tomorrow]["iftar"].timeOffset(timeOffset))
-    } else if (timestamp < (data[fiqh][todaysdate]["sehri_timestamp"]+ (timeOffset * 60)) * 1000) {
+    } 
+    else if (timestamp < (data[fiqh][todaysdate]["sehri_timestamp"]+ (timeOffset * 60)) * 1000) {
+        /* 00:00 to Sahar */
         division = 0;
         nexttimestamp = data[fiqh][todaysdate]["sehri_timestamp"]
 
@@ -116,15 +121,23 @@ function loadData() {
         bindAlarms(data[fiqh][todaysdate]["sehri"].timeOffset(timeOffset),data[fiqh][todaysdate]["iftar"].timeOffset(timeOffset))
 
     } else if (timestamp < (data[fiqh][todaysdate]["iftar_timestamp"]+ (timeOffset * 60)) * 1000) {
+        /* Sahar to Iftar*/
         division = 1;
         nexttimestamp = data[fiqh][todaysdate]["iftar_timestamp"]
-
-        document.getElementById("text-sehritime").innerHTML = data[fiqh][tomorrow]["sehri"].timeOffset(timeOffset).translate()
+        if(!Object.keys(data[fiqh]).includes(tomorrow)){
+            document.getElementById("text-sehritime").style = {'display':'none'}
+        }
+        else {
+            document.getElementById("text-sehritime").innerHTML = data[fiqh][tomorrow]["sehri"].timeOffset(timeOffset).translate()
+        }
         document.getElementById("text-iftartime").innerHTML = data[fiqh][todaysdate]["iftar"].timeOffset(timeOffset).translate()
         document.getElementById("text-next").innerHTML = langdata["word_iftar"]
-        bindAlarms(data[fiqh][tomorrow]["sehri"].timeOffset(timeOffset),data[fiqh][todaysdate]["iftar"].timeOffset(timeOffset))
-
+        if(Object.keys(data[fiqh]).includes(tomorrow)){
+            bindAlarms(data[fiqh][tomorrow]["sehri"].timeOffset(timeOffset),data[fiqh][todaysdate]["iftar"].timeOffset(timeOffset))
+           
+        }
     } else {
+        /* Iftar to Sahar */
         division = 2;
         nexttimestamp = data[fiqh][tomorrow]["sehri_timestamp"]
         document.getElementById("text-sehritime").innerHTML = data[fiqh][tomorrow]["sehri"].timeOffset(timeOffset).translate()

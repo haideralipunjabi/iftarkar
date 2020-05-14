@@ -114,7 +114,7 @@ select {
 #text-title{
     font-size: calc(var(--title-font)*var(--factor));
 }
-#clock {
+#clock, #em {
   font-size: var(--clock-font);
 }
   .modal {
