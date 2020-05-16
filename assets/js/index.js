@@ -92,7 +92,11 @@ function loadData() {
         hSym = "ھ"
     }
     else {
-        hDate += "th" 
+        let suffix = "th"
+        if(hDate.endsWith("1")) suffix = "st"
+        if(hDate.endsWith("2")) suffix = "nd"
+        if(hDate.endsWith("3")) suffix = "rd"
+        hDate += suffix 
     }
     document.getElementById('dateToday').innerHTML = `${hDate.translate()} ${hMonth} ${(1441).toString().translate()} ${hSym}`
     let todaysdate = getTodaysDate(0);
