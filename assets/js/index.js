@@ -72,6 +72,9 @@ function loadData() {
             console.log("em")
         return
     }
+    if(moment.now() > 1590243180000){
+        document.querySelector("option[data-special]").classList.add("is-hidden")   
+    }
     document.querySelector("option[data-special=kargil]").classList.add("is-hidden")
     // document.getElementById("offsetSelect").selectedIndex = 0
     console.log(fiqh)
