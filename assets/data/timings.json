@@ -543,12 +543,6 @@
             "iftar": "07:43pm",
             "sehri_timestamp": 1590185220,
             "iftar_timestamp": 1590243180
-        },
-        "24/05/2020": {
-            "sehri": "03:37am",
-            "iftar": "07:43pm",
-            "sehri_timestamp": 1590271620,
-            "iftar_timestamp": 1590329580
         }
     }
 }
