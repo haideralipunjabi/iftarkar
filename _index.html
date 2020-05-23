@@ -110,9 +110,9 @@
   </div>
 
   <h3 id="dateToday" class="is-hidden title has-text-centered"></h3>
-  <h1 class="title has-text-centered" id="em" style="display: none;">{{ word_em }}</h1>
+  <h1 class="title has-text-centered" id="em">{{ word_em }}</h1>
 
-  <div id="mainbody" class="container">
+  <div id="mainbody" class="is-hidden container">
     <h1 id="text-title" class="{% if lang_code=='en' %} title {% endif %} has-text-centered">{% if lang_code=="ur" or lang_code=="kmr" %}<span id="text-next"></span>{% endif %} {{ title_tlf }} {% if lang_code=="en" %}<b id="text-next"></b>{% endif %}</h1>
 
     <div>
