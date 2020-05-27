@@ -17,7 +17,7 @@ html{
     --fontfamily:BlinkMacSystemFont,-apple-system,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
     --factor:1;
     --title-font: 3rem;
-    --clock-font: 10rem;
+    --clock-font: 8rem;
   }
 [data-theme="dark"] {
   --background-color: #131836;
@@ -111,8 +111,8 @@ select {
 .container {
     padding-top: var(--container-padding-top);
 }
-#text-title{
-    font-size: calc(var(--title-font)*var(--factor));
+.text-title{
+    font-size: calc(var(--title-font)*var(--factor)) !important;
 }
 #clock, #em {
   font-size: var(--clock-font);
@@ -272,14 +272,14 @@ input:checked + .slider:before {
  @media only screen and (max-width: 600px) {
   :root {
       --title-font: 1.5rem;
-      --clock-font: 5rem;
+      --clock-font: 3rem;
   }
 }
 
 @media only screen and (min-width: 600px) {
   :root {
       --title-font: 3rem;
-      --clock-font: 10rem;
+      --clock-font: 8rem;
   }
 }
 @media only screen and (min-width: 1200px) {
@@ -297,4 +297,16 @@ input:checked + .slider:before {
 .footer, .dua, .lang-button{
   font-family: BlinkMacSystemFont,-apple-system,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
- /* purgecss end ignore */
+
+.promos {
+  text-align: center;
+}
+.promos i.fas {
+  font-size: 6rem;
+  margin-bottom: 0.25em;
+}
+
+
+
+
+/* purgecss end ignore */

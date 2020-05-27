@@ -33,34 +33,37 @@ if (theme === null) {
 if (theme === "dark") {
     toggleTheme();
 }
-let promises = [
-    fetch("/assets/data/timings.json").then(r => r.json()),
-    fetch("/assets/data/langs.json").then(r=>r.json())
-]
-Promise.all(promises).then(d => {
-    fiqh = localStorage.getItem("fiqh");
-    timeOffset = localStorage.getItem("timeOffset")
-    data = d[0]
-    console.log(d[1]);
-    langdata = d[1].find(l=>(l["lang_code"]===lang))["data"]
-    if (fiqh === null) {
-        fiqh = "ahlesunnat"
-        localStorage.setItem("fiqh", fiqh)
-    } else if (fiqh === "shia") {
-        document.getElementById("change-fiqh").checked = true;
-    }
+
+timefornextramadan = (-1*moment(moment.now()).diff(moment("15/04/2021",'%D/%M/%Y'),'days') +1).toString()
+document.getElementById("clock").innerHTML = timefornextramadan + " days"
+// let promises = [
+//     fetch("/assets/data/timings.json").then(r => r.json()),
+//     fetch("/assets/data/langs.json").then(r=>r.json())
+// ]
+// Promise.all(promises).then(d => {
+//     fiqh = localStorage.getItem("fiqh");
+//     timeOffset = localStorage.getItem("timeOffset")
+//     data = d[0]
+//     console.log(d[1]);
+//     langdata = d[1].find(l=>(l["lang_code"]===lang))["data"]
+//     if (fiqh === null) {
+//         fiqh = "ahlesunnat"
+//         localStorage.setItem("fiqh", fiqh)
+//     } else if (fiqh === "shia") {
+//         document.getElementById("change-fiqh").checked = true;
+//     }
     
-    if (timeOffset === null) {
-        timeOffset = 0;
-    } else {
-        document.querySelector(`#offsetSelect option[data-offset='${timeOffset}']`).selected = true;
-    }
-    if(fiqh==="kargil"){
-        document.getElementById("change-fiqh").checked = true;
-        document.querySelector("#offsetSelect option[data-special=kargil]").selected =true;
-    }
-    loadData()
-})
+//     if (timeOffset === null) {
+//         timeOffset = 0;
+//     } else {
+//         document.querySelector(`#offsetSelect option[data-offset='${timeOffset}']`).selected = true;
+//     }
+//     if(fiqh==="kargil"){
+//         document.getElementById("change-fiqh").checked = true;
+//         document.querySelector("#offsetSelect option[data-special=kargil]").selected =true;
+//     }
+//     loadData()
+// })
 
 function loadData() {
     if (data === undefined) return;

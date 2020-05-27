@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iftarkar</title>
+  <link rel="stylesheet" href="/assets/css/bulma.min.css">
+  <link rel="stylesheet" href="/assets/css/fontawesome.min.css">
+  <link rel="stylesheet" href="/assets/css/brands.min.css">
+  <link rel="stylesheet" href="/assets/css/solid.min.css">
+  <link rel="stylesheet" href="/assets/css/index.css">
+  <script src="/assets/js/moment.min.js"></script>
+  <!-- Favicons -->
+  <meta name="theme-color" content="#3F51B5">
+  </meta>
+  <link href="/assets/favicons/icon-32x32.png" rel="icon" sizes="32x32" />
+  <link href="/assets/favicons/icon-70x70.png" rel="icon" sizes="70x70" />
+  <link href="/assets/favicons/icon-72x72.png" rel="icon" sizes="72x72" />
+  <link href="/assets/favicons/icon-96x96.png" rel="icon" sizes="96x96" />
+  <link href="/assets/favicons/icon-128x128.png" rel="icon" sizes="128x128" />
+  <link href="/assets/favicons/icon-144x144.png" rel="icon" sizes="144x144" />
+  <link href="/assets/favicons/icon-150x150.png" rel="icon" sizes="150x150" />
+  <link href="/assets/favicons/icon-152x152.png" rel="icon" sizes="152x152" />
+  <link href="/assets/favicons/icon-180x180.png" rel="icon" sizes="180x180" />
+  <link href="/assets/favicons/icon-192x192.png" rel="icon" sizes="192x192" />
+  <link href="/assets/favicons/icon-196x196.png" rel="icon" sizes="196x196" />
+  <link href="/assets/favicons/icon-310x310.png" rel="icon" sizes="310x310" />
+  <link href="/assets/favicons/icon-384x384.png" rel="icon" sizes="384x384" />
+  <link href="/assets/favicons/icon-512x512.png" rel="icon" sizes="512x512" />
+  <link href="/assets/favicons/icon-180x180.png" rel="apple-touch-icon" sizes="180x180" />
+  <link href="/assets/favicons/icon-180x180.png" rel="apple-touch-icon-precomposed">
+  <link rel="icon" href="/assets/favicons/icon-32x32.png" sizes="32x32">
+  <link color="#3F51B5" href="/assets/media/icon.svg" rel="mask-icon" />
+  <link href="/assets/favicons/favicon.ico?v=2" rel="shortcut icon" />
+  <meta name="msapplication-TileColor" content="#fdfdfd">
+  <meta name="msapplication-TileImage" content="/assets/favicons/icon-144x144.png">
+  <link rel="shortcut icon" sizes="196x196" href="/assets/favicons/icon-196x196.png">
+  <meta name="application-name" content="Iftarkar">
+  <meta name="msapplication-tooltip" content="Iftarkar">
+  <meta name="msapplication-config" content="/assets/favicons/ieconfig.xml">
+
+</head>
+
+<body>
+  <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="#">
+        <img src="/assets/media/logo_horizontal.svg" width="112" height="28">
+      </a>
+
+      <a onclick="javascript:toggleMenu();" role="button" class="navbar-burger burger" aria-label="menu"
+        aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start">
+        <!-- <a class="navbar-item" onclick="javascript:launchCalendar()">
+          <i class="fas fa-clock"></i>Timings
+        </a> -->
+        <!-- <a class="navbar-item" id="a2clink" href="assets/calendars/ahlesunnat/timings.ics">
+          <i class="fas fa-calendar-alt"></i>Add to Calendar
+        </a> -->
+        <!-- <a class="navbar-item navswitch">
+          <label class="switch" style="margin-right: 5px;">
+            <input type="checkbox" id="change-fiqh">
+            <span class="slider round"></span>
+          </label>
+          Fikkah Jaffaria
+        </a> -->
+      </div>
+      <div class="navbar-end">
+        <!-- <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            Language
+          </a>
+    
+          <div class="navbar-dropdown">
+            <a class="navbar-item lang-button" data-target="en">EN</a>
+            <a class="navbar-item lang-button" data-target="ur">UR</a>
+          </div>
+        </div> -->
+        <div class="navbar-item is-hidden" id="btn-a2hs">
+          <a class="button is-link" href="#" class="is-small">
+              <i class="fas fa-plus-square"></i>
+            </span>Download App</a>
+        </div>
+        <div class="navbar-item is-hidden" id="btn-android">
+          <a class="button is-success" target="_blank" href="https://play.google.com/store/apps/details?id=org.hackesta.iftarkar" class="is-small">
+              <i class="fab fa-google-play"></i>
+            </span>Play Store</a>
+        </div>
+        <div class="navbar-item">
+          <a class="button is-info" target="_blank" href="mailto:developer@hackesta.org"><span class="is-small">
+              <i class="fas fa-envelope"></i>
+            </span>Mail Us</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- <div class="lang-switch">
+    <a class="lang-button" data-target="en" href="javascript:changeLanguage(0)">EN</a>
+    <a class="lang-button" data-target="ur" href="javascript:changeLanguage(1)">UR</a>
+    <a class="lang-button" data-target="kmr" href="javascript:changeLanguage(2)">KMR</a>
+
+  </div> -->
+
+  <!-- <h3 id="dateToday" class="title has-text-centered"></h3> -->
+  <!-- <h1 class="title has-text-centered" id="em" style="display: none;">Eid Mubarak</h1> -->
+
+  <div id="mainbody" class="container" style="margin-bottom: 100px;">
+    <h1 class="text-title title  has-text-centered">Time for Ramadan 1442 AH / 2021 C.E</h1>
+    <h1 class=" title  has-text-centered" id="clock"></h1>
+    <hr>
+    <h1 class="text-title title  has-text-centered">In Ramadan 1441 AH / 2020 C.E</h1>
+    <br>
+    <div class="columns is-multiline promos">
+      <div class="column">
+        <i class="fas fa-chart-line"></i>
+        <h3 class="title is-3">1.16 Lakh Views</h3>
+      </div>
+      
+      <div class="column">
+        <i class="fas fa-exclamation-triangle"></i>
+        <h3 class="title is-3">Worked without Internet</h3>
+      </div>
+      <div class="column">
+        <i class="fas fa-star"></i>
+        <h3 class="title is-3">4.71 Rating on Play Store</h3>
+      </div>
+      <div class="column">
+        <i class="fas fa-language"></i>
+        <h3 class="title is-3">3 Languages - English, Urdu & Kashmiri</h3>
+      </div>
+    </div>
+    
+    <!-- <h1 id="text-title" class=" title  has-text-centered"> Time Left for <b id="text-next"></b></h1> -->
+
+    <!-- <div>
+      <h1 class=" title  has-text-centered" id="clock"></h1>
+    </div> -->
+    <!-- <div class="progress-wrapper" style="margin-bottom: 20px; margin-top: 20px;">
+      <progress id="timeprogress" class="progress is-custom" value="0" max="100">0</progress>
+      <p class="progress-value">0%</p>
+
+    </div> -->
+
+  
+  <!-- <h1 class="subtitle has-text-centered" style="line-height: 1.5;"><button id="alarm-sahar" style="margin-right: 10px;" class="is-hidden button is-small is-rounded is-info"><span class="icon is-small"><i style="margin:0;" class="fas fa-bell"></i></span></button> Sahar Ending: <span id="text-sehritime"></span></h1>
+  <h1 class="subtitle has-text-centered"  style="line-height: 1.5;"><button id="alarm-iftar" style="margin-right: 10px;" class="is-hidden button is-small is-rounded is-info"><span class="icon is-small"><i style="margin:0;" class="fas fa-bell"></i></span></button> Next Iftar: <span id="text-iftartime"></span> </h1>
+  <div id="timeOffsetGroup" class="has-text-centered">
+    
+    <h1 class="subtitle is-6" style="display: inline-block; line-height: 2.5rem; margin-right: 10px;">Change Area: </h1>
+    
+    <div class="select">
+      <select id="offsetSelect">
+        <option data-offset="0"></option>
+        <option data-offset="-1">Pulwama, Kulgam, Harmukh (-1)</option>
+        <option data-offset="-2">Anantnag, Tral, Kud (-2))</option>
+        <option data-offset="-3">Pahalgam (-3)</option>
+        <option data-offset="-11">Leh (-11)</option>
+        <option class="is-hidden" data-special="kargil" data-offset="0">Kargil</option>
+        <option data-offset="1">Baramulla (+1)</option>
+        <option data-offset="2">Bandipora, Poonch (+2)</option>
+        <option data-offset="3">Uri (+3)</option>
+        <option data-offset="4">Teetwal, Karnah (+4)</option>
+
+      </select>
+    </div> -->
+    
+  <!-- </div> -->
+  <!-- <div style="margin-top: 20px; margin-bottom: 50px; margin-left: 40px; margin-right: 40px;">
+    <div id="dua-tabs" class="tabs is-centered">
+      <ul>
+        <li><a data-target="sahar">Dua at Sahar</a></li>
+        <li><a data-target="iftar">Dua at Iftar</a></li>
+      </ul>
+    </div>
+    <div class="dua has-text-centered is-hidden" id="dua-sahar">
+      <h1 class="dua-arabic title is-5">وَبِصَوْمِ غَدٍ نَّوَيْتُ مِنْ شَهْرِ رَمَضَانَ</h1>
+      <h1 class="dua-roman title is-5">Wa bisawmi ghadinn nawaiytu min shahri ramadan</h1>
+      <h1 class="dua-english title is-5">I intend to keep the fast for tomorrow in the month of Ramadan</h1>
+    </div>
+    <div class="dua has-text-centered is-hidden" id="dua-iftar">
+      <h1 class="dua-arabic title is-5">اللَّهُمَّ اِنِّى لَكَ صُمْتُ وَبِكَ امنْتُ وَعَليْكَ تَوَكّلتُ وَ عَلى رِزْقِكَ اَفْطَرْتُ</h1>
+      <h1 class="dua-roman title is-5">Allahumma inni laka sumtu wa bika aamantu wa alayka tawakkaltu wa ala rizq-ika-aftartu</h1>
+      <h1 class="dua-english title is-5">O Allah! I fasted for You and I believe in You and I put my trust in You and I break my fast with Your sustenance</h1>
+    </div>
+  </div> -->
+</div>
+  <!-- <div id="modal-calendar" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Timings</p>
+        <button class="delete" aria-label="close" onclick="javascript:toggleModal('modal-calendar')"></button>
+      </header>
+      <section class="modal-card-body">
+        <div>
+          <table class="table is-bordered is-striped is-fullwidth">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Sahar</th>
+                <th>Iftar</th>
+              </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </div> -->
+  <button onclick="javascript:toggleTheme()" class="fab-theme-button sun"></button>
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p>
+        <strong>Iftarkar</strong> -
+
+        <a href="https://haideralipunjabi.com" target="_blank">Haider Ali Punjabi</a> |
+        <a
+          href="https://hackesta.org" target="_blank">Hackesta</a>
+      </p>
+    </div>
+  </footer>
+  <script src="/assets/js/index.js"></script>
+</body>
+
+</html>
