@@ -68,21 +68,16 @@ document.getElementById("clock").innerHTML = timefornextramadan + " days"
 function loadData() {
     if (data === undefined) return;
     if((fiqh==="ahlesunnat" && moment.now() >= 1590329100*1000)||
-        (fiqh==="shia"&&moment.now()>=1590329640*1000)||
-        (fiqh==="kargil" && moment.now() > 1590329580*1000) ){
+        (fiqh==="shia"&&moment.now()>=1590329640*1000)){
             document.getElementById("mainbody").style.display="none"
             document.getElementById("em").style.display="block";
             console.log("em")
         return
     }
-    document.querySelector("option[data-special=kargil]").classList.add("is-hidden")
+    
     // document.getElementById("offsetSelect").selectedIndex = 0
     console.log(fiqh)
-    if(fiqh==="shia" || fiqh==="kargil"){
-        document.querySelector("option[data-special=kargil]").classList.remove("is-hidden")
-    }
-    if(fiqh==="kargil"){
-        timeOffset = 0;
+    if(fiqh==="shia"){
     }
     document.getElementById("clock").innerHTML = ""
     document.getElementById("a2clink").href = `assets/calendars/${fiqh}/timings${getOffsetString()}.ics`
